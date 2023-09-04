@@ -1,0 +1,99 @@
+.sidebar {
+    
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #788896;
+
+  width: 250px;
+  height: 100vh;
+  background-color: #E3E8ED;
+  color: #fff;
+  padding: 20px;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.menu a svg {
+  margin-right: 10px;
+}
+
+.listItems {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #293845;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.items p {
+  display: inline;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: #293845;
+  text-decoration: none;
+}
+
+.footerItens {
+  color: #293845;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.footerIcons {
+  color: #293845;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: left;
+}
