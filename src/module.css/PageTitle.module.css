@@ -1,0 +1,24 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 05px 20px;
+    align-items: center
+}
+
+h1{
+    color: #FF6701;
+}
+
+span svg{
+    color: #FF6701;
+    font-size: 23px;
+}
+
+.icons svg{
+    color: white;
+    margin: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+

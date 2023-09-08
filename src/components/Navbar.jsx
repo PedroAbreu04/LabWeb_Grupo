@@ -23,7 +23,7 @@ function Navbar() {
     };
 
     return (
-        <div className='navBar'>
+        <div className={styles.navBar}>
             <div className={`${styles.sidebar} ${sidebar ? styles.active : styles.close}`}>
 
                 <div className={styles.header}>
@@ -53,7 +53,7 @@ function Navbar() {
                         <small> Usuarios </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link4' ? styles.active : ''}`} onClick={() => handleLinkClick('link4')}>
+                    <NavLink to="/dashboard/cliente" className={`${styles.items} ${activeLink === 'link4' ? styles.active : ''}`} onClick={() => handleLinkClick('link4')}>
                         <GroupIcon />
                         <small> Clientes </small>
                     </NavLink>

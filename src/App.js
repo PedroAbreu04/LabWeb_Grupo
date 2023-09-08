@@ -3,9 +3,9 @@ import IndexRoutes from './routes/IndexRoutes';
 
 function App() {
   return (
-   <div>
+   <main style={{}}>
     <IndexRoutes/>
-  </div>
+  </main>
   );
 }
 

@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
+import DashboardRoutes from "../routes/DashboardRoutes"
 
 function Dashboard() {
   return (
    <>
-    <Navbar></Navbar>
+    <DashboardRoutes />
    </>
   );
 }
