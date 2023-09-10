@@ -1,0 +1,52 @@
+.container{
+    background-color: #172335;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.id{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.info{
+    flex-direction: row;
+    display: flex;
+    font-size: 1em;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.foto img{
+    height: 100%;
+    width: 100%;
+}
+
+.botao{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.botao button{
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnVi{
+    background-color: #272E37;
+}
+
+.btnEdi{
+    background-color: #FF6701;
+}

@@ -8,11 +8,13 @@ import styles from "../module.css/PageTitle.module.css";
 function PageTitles({ title }) {
   return (
     <div className={styles.nav}>
-      <span>
-        <FaSistrix /> <input type="text" /> <FaSliders />
-      </span>
+      <div className={styles.input_container}>
+        <FaSistrix className={`${styles.icon} ${styles.iconL}`} />
+        <input type="text" placeholder="Buscar"/>
+        <FaSliders className={`${styles.icon} ${styles.iconR}`} />
+      </div>
 
-        <h1>{title}</h1>
+      <h1 className={styles.title}>{title}</h1>
 
       <div className={styles.icons}>
         <IoMdSunny />

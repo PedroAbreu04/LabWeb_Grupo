@@ -1,5 +1,6 @@
 import styles from "../module.css/Clientes.module.css"
 import PageTitles from "./PageTitles";
+import CardsClientes from "./CardsClientes"
 
 function Cliente() {
     return (
@@ -8,7 +9,7 @@ function Cliente() {
         <PageTitles title="Clientes"/>
         
         <div className={styles.cards}>
-          CLIENTE
+          <CardsClientes />
         </div>
       </div>
     );
