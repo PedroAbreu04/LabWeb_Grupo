@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 05px 20px;
     align-items: center
 }
 
@@ -10,30 +9,37 @@
     position: relative;
 }
 
-.icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #FF6701; /* Cor dos ícones */
+.searchContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 400px;
+    height: 34;
+    max-width: 471px;
+    max-height: 34px;
+    border-radius: 15px;
+    background-color: #292F43;
+    color: #FF6701;
+    font-size: 23px;
 }
 
-.iconL{
-    left: 10px;
+.searchInput {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    transition: all 0.7s;
+    background: transparent;
+    color: white;
 }
 
-.iconR{
-    right: 10px;
+.searchInput::placeholder {
+    color: white;
 }
-
-input {
-    padding: 05px 30px; /* Espaço à esquerda para acomodar os ícones */
-    border-radius: 5px;
-  }
-  
-
-.title {
-    color: #ff6701;
-  }
 
 .icons svg{
     color: white;

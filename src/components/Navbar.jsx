@@ -58,7 +58,7 @@ function Navbar() {
                         <small> Clientes </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link5' ? styles.active : ''}`} onClick={() => handleLinkClick('link5')}>
+                    <NavLink to="/dashboard/produtos" className={`${styles.items} ${activeLink === 'link5' ? styles.active : ''}`} onClick={() => handleLinkClick('link5')}>
                         <ArticleSharp />
                         <small> Produtos </small>
                     </NavLink>

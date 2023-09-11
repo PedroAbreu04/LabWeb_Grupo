@@ -4,14 +4,13 @@ import { BiSolidBell } from "react-icons/bi";
 import { BsShop } from "react-icons/bs";
 
 import styles from "../module.css/PageTitle.module.css";
+import React from "react";
 
 function PageTitles({ title }) {
   return (
     <div className={styles.nav}>
-      <div className={styles.input_container}>
-        <FaSistrix className={`${styles.icon} ${styles.iconL}`} />
-        <input type="text" placeholder="Buscar"/>
-        <FaSliders className={`${styles.icon} ${styles.iconR}`} />
+      <div className={styles.searchContainer}>
+        <label htmlFor="inputSearch"><FaSistrix /></label> <input placeholder="Buscar produtos" id="inputSearch" type="text" className={styles.searchInput}/> <FaSliders />
       </div>
 
       <h1 className={styles.title}>{title}</h1>

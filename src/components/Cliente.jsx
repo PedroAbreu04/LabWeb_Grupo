@@ -1,14 +1,15 @@
 import styles from "../module.css/Clientes.module.css"
 import PageTitles from "./PageTitles";
 import CardsClientes from "./CardsClientes"
+import stylesLoading from "../module.css/Base.module.css"
 
 function Cliente() {
     return (
-      <div className={styles.fundo}> 
+      <div className={stylesLoading.fundo}> 
 
         <PageTitles title="Clientes"/>
         
-        <div className={styles.cards}>
+        <div className={stylesLoading.cards}>
           <CardsClientes />
         </div>
       </div>
