@@ -6,20 +6,24 @@
     align-items: center;
     padding: 50px;
     flex-direction: column;
+    height: 100vh;
 }
 
 .cards{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 30px;
-    overflow-y: scroll;
+    justify-content: start;
     background-color: #353739;
+
     width: 100%;
-    max-height: 1000px;
+    gap: 50px;
+    padding: 30px;
     border-radius: 5px;
+    min-height: 100%;
+    height: auto;
+
+    overflow-y: auto;
 }
 
 .spinner {
@@ -58,3 +62,14 @@
      transform: rotate(360deg);
     }
    }
+
+
+   @media (max-width: 767px) {
+    .cards{
+        justify-content: center;
+    }
+
+    .fundo{
+        padding: 10px;
+    }
+  }

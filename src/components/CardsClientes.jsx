@@ -28,7 +28,7 @@ function CardsClientes() {
         </div>
         <div>
           <p>Nome: {info.name}</p>
-          <p>E-mail: {info.email}</p>
+          <p className={ styles.p_email }> E-mail: {info.email}</p>
           <p>Status: {info.status}</p>
         </div>
       </div>
