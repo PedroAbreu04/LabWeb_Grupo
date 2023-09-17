@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom/dist';
 function Navbar() {
 
-    const [sidebar, setSidebar] = useState(true)
+    const [sidebar, setSidebar] = useState(false)
     const [activeLink, setActiveLink] = useState('link1');
 
     function sidebarF() {
@@ -38,7 +38,7 @@ function Navbar() {
 
 
                 <div className={`${styles.listItems}`}>
-                    <NavLink className={`${styles.items} ${activeLink === 'link1' ? styles.active : ''}`} onClick={() => handleLinkClick('link1')}>
+                    <NavLink to="/dashboard" className={`${styles.items} ${activeLink === 'link1' ? styles.active : ''}`} onClick={() => handleLinkClick('link1')}>
                         <Home />
                         <small> Painel de Controle </small>
                     </NavLink>
@@ -53,7 +53,7 @@ function Navbar() {
                         <small> Usuarios </small>
                     </NavLink>
 
-                    <NavLink to="/dashboard/cliente" className={`${styles.items} ${activeLink === 'link4' ? styles.active : ''}`} onClick={() => handleLinkClick('link4')}>
+                    <NavLink to="/dashboard/clientes" className={`${styles.items} ${activeLink === 'link4' ? styles.active : ''}`} onClick={() => handleLinkClick('link4')}>
                         <GroupIcon />
                         <small> Clientes </small>
                     </NavLink>

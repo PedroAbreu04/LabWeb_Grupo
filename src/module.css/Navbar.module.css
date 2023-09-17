@@ -8,10 +8,9 @@
   justify-content: space-between;
   align-items: center;
 
-  min-height: 100vh;
-  height: auto;
+  height: 100vh;
 
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: rgb(22, 27, 34);
   color: #fff;
   padding: 15px;
@@ -98,6 +97,8 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  overflow-y: auto;
 }
 
 .items {
@@ -106,14 +107,16 @@
   text-decoration: none;
 
   display: flex;
-
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .sidebar.active .items {
   flex-direction: row;
   justify-content: start;
+  
+  white-space: nowrap; /* Evitar quebrar o texto em várias linhas */
+  text-overflow: ellipsis;
 }
 
 .sidebar.close .items {
@@ -127,6 +130,8 @@
 
 .items small {
   text-align: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 .sidebar.active .items small {
@@ -263,8 +268,8 @@
   }
 
   .listItems {
-    overflow-y: auto;
     padding: 50px;
+    overflow-y: auto;
   }
 
 }

@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import axios from 'axios';
 import styles from '../module.css/Produto.module.css';
 import { styled } from '@mui/material/styles';
 import { InputAdornment,TextField } from '@mui/material';
-import {ButtonSend, ButtonClose} from './Buttons';
 import { useEffect } from 'react';
 
 const CssTextField = styled(TextField)({
@@ -159,6 +157,7 @@ function EditProduct({id}) {
           <Typography id="modal-title" variant="h6" component="h2">
             Editar Produto
           </Typography>
+
           <form onSubmit={handleSubmit} className={styles.form} 
 >
             <CssTextField
@@ -247,8 +246,8 @@ function EditProduct({id}) {
               fullWidth
               required
             />
-            <ButtonSend type="submit">Enviar</ButtonSend>
-            <ButtonClose onClick={handleClose}>Fechar</ButtonClose>
+            {/* <ButtonSend type="submit">Enviar</ButtonSend>
+            <ButtonClose onClick={handleClose}>Fechar</ButtonClose> */}
           </form>
         </Box>
       </Modal>
