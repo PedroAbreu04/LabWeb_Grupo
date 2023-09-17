@@ -1,13 +1,14 @@
-import React from "react";
-import PageTitles from "./PageTitles";
-import styles from "../module.css/Produtos.module.css";
-import stylesLoading from "../module.css/Base.module.css"
-import Produto from "./Produto";
-import axios from 'axios';
+import React from 'react';
+import base from "../module.css/BaseDashboard.module.css"
+import TitleBaseDashboard from './HeaderDashboard'
 import { useEffect, useState } from "react";
+import axios from 'axios';
+import BaseAddItem from './BaseAddItem';
+import CardsProdutos from './CardsProdutos'
+
 function Produtos() {
-  
-  const [products, setProducts] = useState([]);
+
+  const [dados, setdados] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function Produtos() {
     const apiUrl = 'https://api-fatec.onrender.com/api/v1/product';
     axios(apiUrl)
       .then((response) => {
-        setProducts(response.data);
+        setdados(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -26,23 +27,28 @@ function Produtos() {
       });
   };
 
+
+  if (isLoading) {
+    return (
+      <div className={base.spinner}></div>
+    );
+  }
+
   return (
-   <>
-         <div className={styles.fundo}> 
+    <div className={base.background}>
+      <TitleBaseDashboard title={'Produtos'} />
 
-        <PageTitles title="Produtos"/>
+      <div className={base.content}>
 
-        <div className={styles.cards}>
-        {isLoading ? (
-          <div className={stylesLoading.spinner}></div>
-  ) : (
-    products.map((product) => (
-      <Produto key={product.id} products={product} />
-    ))
-  )}
+        <div>
+          <BaseAddItem title={"Produtos"} />
         </div>
+
+        <div className={base.cards}>
+          <CardsProdutos products={dados} />
         </div>
-   </>
+      </div>
+    </div>
   );
 }
 
