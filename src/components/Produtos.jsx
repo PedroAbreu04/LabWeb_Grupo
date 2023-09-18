@@ -3,7 +3,7 @@ import base from "../module.css/BaseDashboard.module.css"
 import TitleBaseDashboard from './HeaderDashboard'
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import BaseAddItem from './BaseAddItem';
+import AddProduct from './AddProduct';
 import CardsProdutos from './CardsProdutos'
 
 function Produtos() {
@@ -41,11 +41,11 @@ function Produtos() {
       <div className={base.content}>
 
         <div>
-          <BaseAddItem title={"Produtos"} />
+          <AddProduct title={"Produtos"} refreshProducts={ dataTable } />
         </div>
 
         <div className={base.cards}>
-          <CardsProdutos products={dados} />
+          <CardsProdutos products={dados}  />
         </div>
       </div>
     </div>

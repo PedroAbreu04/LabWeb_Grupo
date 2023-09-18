@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     color: #FFF;
+    margin-bottom: 50px;
 }
 
 .cardBody {
@@ -24,7 +25,7 @@
 }
 
 .cardBody h1 {
-    width: 100%;
+    width: 95%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -37,8 +38,8 @@
 }
 
 .cardBody img {
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
 }
 
 .cardBody span {
@@ -83,9 +84,6 @@
     transform: scale(0.99);
 }
 
-
-@media (max-width: 767px) {
-    .produto {
-        margin-bottom: 50px;
-    }
+.noImgProduct{
+    filter: invert(100%); 
 }
