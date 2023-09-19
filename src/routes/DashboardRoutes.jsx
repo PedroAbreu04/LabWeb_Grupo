@@ -1,27 +1,33 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 import Clientes from '../components/Clientes';
 import Produtos from '../components/Produtos';
 import BaseDashboard from '../components/BaseDashboard';
 
 import Navbar from '../components/Navbar';
+import PrivateRoutes from './PrivateRoutes';
 
 function DashboardRoutes() {
 
-    return (
-       <>
-            <Navbar />
-                <Routes>
-                    <Route path="/" element={<BaseDashboard />} />
-                    <Route path="/clientes" element={<Clientes />} />
-                    <Route path="/produtos" element={<Produtos />} />
+    const [key, setKey] = useState(0);
 
-                    {/* Url with Params  */}
-                    <Route path="/produto/:id" element={<BaseDashboard />} />
-                    <Route path="/cliente/:id" element={<BaseDashboard />} />
-                </Routes>
+    return (
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+                <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
+                <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} />} />
+
+                {/* Url with Params  */}
+
+                <Route path="/produto/:id" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+                <Route path="/cliente/:id" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+            </Routes>
+
         </>
     );
-} 
+}
 
 export default DashboardRoutes;
