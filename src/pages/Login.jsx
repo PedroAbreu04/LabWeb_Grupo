@@ -34,6 +34,7 @@ function Login() {
         if (data.statusCode === 401) {
           messageError.innerHTML = data.message;
         } else {
+          localStorage.setItem("token", data.token);
           window.location.href = '/dashboard';
         }
       });
