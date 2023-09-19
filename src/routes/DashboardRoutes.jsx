@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import Clientes from '../components/Clientes';
 import Produtos from '../components/Produtos';
+import Produto from '../components/Produto';
+
 import BaseDashboard from '../components/BaseDashboard';
 
 import Navbar from '../components/Navbar';
@@ -22,7 +24,7 @@ function DashboardRoutes() {
 
                 {/* Url with Params  */}
 
-                <Route path="/produto/:id" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+                <Route path="/produto/:id" element={<PrivateRoutes component={Produto} routeKey={key} />} />
                 <Route path="/cliente/:id" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
             </Routes>
 
