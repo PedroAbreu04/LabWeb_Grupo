@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
-import Clientes from '../components/Clientes';
-import Produtos from '../components/Produtos';
-import Produto from '../components/Produto';
+import Clientes from '../components/clientes/Clientes';
 
-import BaseDashboard from '../components/BaseDashboard';
+import Produto from '../components/produtos/Produto';
+import Produtos from '../components/produtos/Produtos';
+
+import BaseDashboard from '../components/template/BaseDashboard';
 
 import Navbar from '../components/Navbar';
 import PrivateRoutes from './PrivateRoutes';

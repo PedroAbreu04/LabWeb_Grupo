@@ -1,5 +1,5 @@
 import React from 'react';
-import base from "../module.css/BaseDashboard.module.css"
+import base from "../../module.css/template/BaseDashboard.module.css"
 import TitleBaseDashboard from './HeaderDashboard'
 import { useState } from "react";
 import BaseAddItem from './BaseAddItem';

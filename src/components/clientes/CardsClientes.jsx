@@ -1,8 +1,7 @@
-import styles from "../module.css/CardsClientes.module.css";
 import { Link } from 'react-router-dom'
+import styles from "../../module.css/clientes/CardsClientes.module.css";
 
 function CardsClientes({ customers }) {
-
   return customers.map((customer) => (
 
     <div className={`${styles.container} ${customer} ${!customer.status ? styles.disabledCustomer : ""} `} key={customer.id}>
@@ -19,7 +18,7 @@ function CardsClientes({ customers }) {
           </div>
         </div>
       </div>
-      
+
       <div className={styles.botao}>
         <Link className={styles.btnVi} to={`/dashboard/cliente/${customer.id}`}>Visualizar</Link>
       </div>

@@ -109,21 +109,6 @@
     transform: translate(-50%, -50%);
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 5px;
-}
-
-.btnSubmit {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
 
 @keyframes spin8932 {
     to {
@@ -149,73 +134,3 @@
 }
 
 
-/*  TIRAR DAQUI */ 
-
-.loading {
-    border: 8px solid #f3f3f3; /* Cor do círculo */
-    border-top: 8px solid #3498db; /* Cor da borda superior */
-    border-radius: 50%; /* Cria um círculo */
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite; /* Animação de rotação */
-    margin: 50px auto; /* Centraliza o spinner */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.loading form{
-    display: none;
-}
-
-
-.div_file {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.btn_file{
-    border: 1px dashed #FF6701;
-    color:  white;
-    cursor: pointer;
-    transition: all 0.5s;
-    padding: 50px;
-    font-size: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn_file small{
-    font-size: 16px;
-    height: 16px;
-}
-
-/* .btnSubmit:hover{
-    border: 2px dashed rgb(21, 122, 75);
-    color: rgb(21, 122, 75)
-} */
-
-.filesUpload{
-    max-height: 320px;
-    overflow-y: scroll;
-}
-
-.filesUpload::-webkit-scrollbar{
-    width: 0px;
-}
-
-.fileName{
-    /* max-width: 25ch; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.exclurFileUser{
-    cursor: pointer;
-}

@@ -1,10 +1,11 @@
+import React from "react";
+
 import { FaSistrix, FaSliders } from "react-icons/fa6";
 import { IoMdSunny } from "react-icons/io";
 import { BiSolidBell } from "react-icons/bi";
 import { BsShop } from "react-icons/bs";
 
-import styles from "../module.css/HeaderDashboard.module.css";
-import React from "react";
+import styles from "../../module.css/template/HeaderDashboard.module.css";
 
 function PageTitles({ title }) {
   return (

@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from '../module.css/CardsProdutos.module.css';
+
 import { Link } from 'react-router-dom'
+
+import styles from '../../module.css/produtos/CardsProdutos.module.css';
 
 const CardsProdutos = ({ products }) => {
   return (

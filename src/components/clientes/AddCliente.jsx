@@ -11,30 +11,30 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 
-import styles from "../module.css/BaseDashboard.module.css"
+import styles from "../../module.css/template/BaseDashboard.module.css"
 
 const CssTextField = styled(TextField)({
     '& label': {
         color: '#FFF',
     },
     '& label.Mui-focused': {
-        color: '#FFF',
+        color: 'rgba(2, 175, 255, 0.8)',
     },
     '& .MuiInputBase-input': {
         color: '#FFF',
     },
     '& .MuiInput-underline:after': {
-        borderBottomColor: '#FF6701',
+        borderBottomColor: 'rgb(255, 255, 255, 0.5)',
     },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
-            borderColor: '#FF6701',
+            borderColor: 'rgb(255, 255, 255, 0.5)',
         },
         '&:hover fieldset': {
-            borderColor: '#FF6701',
+            borderColor: 'rgb(255, 255, 255, 0.5)',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#FF6701',
+            borderColor: 'rgba(2, 175, 255, 0.8)',
         },
     }
 });

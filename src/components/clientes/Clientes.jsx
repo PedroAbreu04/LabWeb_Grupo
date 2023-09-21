@@ -1,10 +1,13 @@
-import CardsClientes from "./CardsClientes"
 import React from 'react';
-import base from "../module.css/BaseDashboard.module.css"
 import { useState, useEffect } from "react";
-import TitleBaseDashboard from './HeaderDashboard'
-import AddCliente from './AddCliente';
 import axios from "axios";
+
+import base from "../../module.css/template/BaseDashboard.module.css"
+
+import AddCliente from './AddCliente';
+import CardsClientes from "./CardsClientes"
+
+import TitleBaseDashboard from '../template/HeaderDashboard'
 
 function Clientes() {
 

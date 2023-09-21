@@ -11,7 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 
-import styles from "../module.css/BaseDashboard.module.css"
+import styles from "../../module.css/template/BaseDashboard.module.css"
 
 const CssTextField = styled(TextField)({
     '& label': {

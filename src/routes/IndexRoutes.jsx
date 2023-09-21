@@ -17,7 +17,7 @@ function IndexRoutes() {
                     <Route path="*"  element={< NotFound/>} />
                     <Route path="/"  element={<Login />} />
                     <Route path="/login"  element={<Login />} />
-                    <Route path="/dashboard/*" element={ <PrivateRoutes component={Dashboard}  routeKey={key}/> }/>
+                    <Route path="/dashboard/*" element={ <PrivateRoutes component={Dashboard} routeKey={key}/> }/>
                 </Routes>
             </Router>
         </>

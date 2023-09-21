@@ -1,6 +1,4 @@
 import React from 'react';
-import base from "../module.css/BaseDashboard.module.css";
-import styles from "../module.css/Produto.module.css";
 
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -14,6 +12,9 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
+
+import base from "../../module.css/template/BaseDashboard.module.css";
+import styles from "../../module.css/produtos/Produto.module.css";
 
 function Produto() {
 
@@ -62,7 +63,6 @@ function Produto() {
                 borderColor: 'rgba(2, 175, 255, 0.8)',
             },
         }
-
     });
 
     const buttonEditSyle = {
