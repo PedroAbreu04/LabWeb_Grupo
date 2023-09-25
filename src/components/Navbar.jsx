@@ -22,6 +22,12 @@ function Navbar() {
         setActiveLink(linkId);
     };
 
+    const closeNavbarMobile = () => {
+        if ( window.innerWidth <= 767) {
+            sidebarF();
+        }
+    }
+
     return (
         <div className={styles.navBar}>
             <div className={`${styles.sidebar} ${sidebar ? styles.active : styles.close}`}>
@@ -31,54 +37,91 @@ function Navbar() {
                 </div>
 
                 <div className={`${styles.images}`}>
-                    <img alt="Logo" src={`https://gecommerce.com.br/wp-content/uploads/2020/05/cropped-Logo-RGB_Negativo.png`} className={`${styles.logo}`} />
+                    {/* <img alt="Logo" src={`/images/logo.png`} className={`${styles.logo}`} /> */}
                     <img alt="Profile" src={`https://cdn-icons-png.flaticon.com/512/219/219969.png`} className={`${styles.profile}`} />
-
                 </div>
 
 
                 <div className={`${styles.listItems}`}>
-                    <NavLink to="/dashboard" className={`${styles.items} ${activeLink === 'link1' ? styles.active : ''}`} onClick={() => handleLinkClick('link1')}>
+                    <NavLink 
+                        to="/dashboard" 
+                        className={`${styles.items} 
+                        ${activeLink === 'link1' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link1'); closeNavbarMobile(); } }
+                    >
                         <Home />
                         <small> Painel de Controle </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link2' ? styles.active : ''}`} onClick={() => handleLinkClick('link2')}>
+                    <NavLink 
+                        className={`${styles.items} 
+                        ${activeLink === 'link2' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link2'); closeNavbarMobile(); } }
+                    >
                         <AddShoppingCartOutlined />
                         <small> Pedidos </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link3' ? styles.active : ''}`} onClick={() => handleLinkClick('link3')}>
+                    <NavLink 
+                        className={`${styles.items} 
+                        ${activeLink === 'link3' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link3'); closeNavbarMobile(); }}
+                    >
                         <Person />
                         <small> Usuarios </small>
                     </NavLink>
 
-                    <NavLink to="/dashboard/clientes" className={`${styles.items} ${activeLink === 'link4' ? styles.active : ''}`} onClick={() => handleLinkClick('link4')}>
+                    <NavLink 
+                        to="/dashboard/clientes" 
+                        className={`${styles.items} 
+                        ${activeLink === 'link4' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link4'); closeNavbarMobile(); }}
+                    >
                         <GroupIcon />
                         <small> Clientes </small>
                     </NavLink>
 
-                    <NavLink to="/dashboard/produtos" className={`${styles.items} ${activeLink === 'link5' ? styles.active : ''}`} onClick={() => handleLinkClick('link5')}>
+                    <NavLink 
+                        to="/dashboard/produtos" 
+                        className={`${styles.items} ${activeLink === 'link5' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link5'); closeNavbarMobile(); }}
+                    >
                         <ArticleSharp />
                         <small> Produtos </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link6' ? styles.active : ''}`} onClick={() => handleLinkClick('link6')}>
+                    <NavLink 
+                        className={`${styles.items} 
+                        ${activeLink === 'link6' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link6'); closeNavbarMobile(); }}
+                    >
                         <EqualizerIcon />
                         <small> Analytics </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link7' ? styles.active : ''}`} onClick={() => handleLinkClick('link7')}>
+                    <NavLink 
+                        className={`${styles.items} 
+                        ${activeLink === 'link7' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link7'); closeNavbarMobile(); }}
+                    >
                         <MapIcon />
                         <small> Mapa de Clientes </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link8' ? styles.active : ''}`} onClick={() => handleLinkClick('link8')}>
+                    <NavLink 
+                        className={`${styles.items} 
+                        ${activeLink === 'link8' ? styles.active : ''}`} 
+                        onClick={() =>{ handleLinkClick('link8'); closeNavbarMobile(); }}
+                    >
                         <TableRowsIcon />
                         <small> Tabelas </small>
                     </NavLink>
 
-                    <NavLink className={`${styles.items} ${activeLink === 'link9' ? styles.active : ''}`} onClick={() => handleLinkClick('link9')}>
+                    <NavLink
+                        className={`${styles.items} 
+                        ${activeLink === 'link9' ? styles.active : ''}`} 
+                        onClick={() => { handleLinkClick('link9'); closeNavbarMobile(); }}
+                    >
                         <Settings />
                         <small> Configurações </small>
                     </NavLink>

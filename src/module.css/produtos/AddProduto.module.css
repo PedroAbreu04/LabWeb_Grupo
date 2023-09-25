@@ -19,8 +19,11 @@
 
 .btnSubmit {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 10%;
+    margin-top: 50px;
 }
 
 @keyframes spin {

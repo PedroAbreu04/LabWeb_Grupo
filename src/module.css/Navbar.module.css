@@ -88,8 +88,7 @@
 }
 
 .profile {
-  width: 175px;
-  height: 175px;
+  width: 125px;
   border-radius: 50%;
 }
 
@@ -111,6 +110,7 @@
   border-radius: 6px;
   width: 6px;
   height: 10px;
+
 }
 
 .listItems::-webkit-scrollbar-thumb:hover {
@@ -125,6 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .sidebar.active .items {
@@ -151,7 +152,7 @@
 }
 
 .sidebar.active .items small {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .sidebar.close .items small {

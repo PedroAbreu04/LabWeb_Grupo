@@ -5,51 +5,11 @@ import { styled } from '@mui/material/styles';
 import { TextField, Select, MenuItem, InputAdornment, InputLabel, FormControl, Modal, Typography, Button, Box } from '@mui/material';
 
 import AddIcon from '@mui/icons-material/Add';
-import CloseIcon from '@mui/icons-material/Close';
-import CheckIcon from '@mui/icons-material/Check';
+
 
 import styles from "../../module.css/produtos/AddProduto.module.css"
 import base from "../../module.css/template/BaseDashboard.module.css"
-
-const CssTextField = styled(TextField)({
-    '& label': {
-        color: '#FFF',
-    },
-    '& label.Mui-focused': {
-        color: 'rgba(2, 175, 255, 0.8)',
-    },
-    '& .MuiInputBase-input': {
-        color: '#FFF',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: 'rgb(255, 255, 255, 0.5)',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: 'rgb(255, 255, 255, 0.5)',
-        },
-        '&:hover fieldset': {
-            borderColor: 'rgb(255, 255, 255, 0.5)',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: 'rgba(2, 175, 255, 0.8)',
-        },
-    }
-});
-
-const CssSelect = styled(Select)({
-    '& .MuiSelect-icon': {
-        color: 'rgb(255, 255, 255, 0.5) '
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-        borderWidth: '1px !important',
-        borderColor: 'rgb(255, 255, 255, 0.5) !important',
-    },
-    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-        borderWidth: '2px !important',
-        borderColor: 'rgba(2, 175, 255, 0.8) !important',
-    },
-});
+import FormProduto from './FormProduto';
 
 const style = {
     position: 'absolute',
@@ -96,56 +56,18 @@ const buttonAddStyle = {
     }
 };
 
-const buttonConfirmStyle = {
-    backgroundColor: 'rgb(34, 143, 34)',
-    border: '0px',
-    width: '65%',
-    color: 'white',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&:hover': {
-        backgroundColor: 'rgb(34, 143, 34, 0.7)'
-    }
-};
-
-const buttonCloseStyle = {
-    backgroundColor: 'rgb(229, 36, 36)',
-    border: '0px',
-    width: '35%',
-    color: 'white',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&:hover': {
-        backgroundColor: 'rgba(229, 36, 36, 0.7)'
-    }
-};
-
-const inputStyle = {
-    marginBottom: '10px',
-}
-
-const SelectStyle = {
-    marginBottom: '10px'
-}
-
 export default function AddCliente({ title, refreshProducts }) {
 
     // Modal - Ignore
     const [open, setOpen] = React.useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [categorys, setCategorys] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
-
+    const [selectedCategory, setSelectedCategory] = useState();
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const fileInputRef = useRef(null);
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -194,42 +116,44 @@ export default function AddCliente({ title, refreshProducts }) {
             });
     };
 
-    useEffect(() => {
-        getCategory();
-    }, []);
+    // useEffect(() => {
+    //     getCategory();
+    // }, []);
 
 
     // Funciton Add Product 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true)
+        console.log(formData)
+
+        // setIsLoading(true)
 
 
-        try {
-            const jsonData = {
-                nome: formData.nome,
-                descricao: formData.descricao,
-                marca: formData.marca,
-                preco: parseFloat(formData.preco),
-                estoque: parseInt(formData.estoque),
-                largura: parseFloat(formData.largura),
-                comprimento: parseFloat(formData.comprimento),
-                peso: parseFloat(formData.peso),
-                altura: parseFloat(formData.altura),
-                id_categoria: parseInt(formData.id_categoria),
-                images: [{ image: formData.img1, image: formData.img2 }]
-            };
+        // try {
+        //     const jsonData = {
+        //         nome: formData.nome,
+        //         descricao: formData.descricao,
+        //         marca: formData.marca,
+        //         preco: parseFloat(formData.preco),
+        //         estoque: parseInt(formData.estoque),
+        //         largura: parseFloat(formData.largura),
+        //         comprimento: parseFloat(formData.comprimento),
+        //         peso: parseFloat(formData.peso),
+        //         altura: parseFloat(formData.altura),
+        //         id_categoria: parseInt(formData.id_categoria),
+        //         images: [{ image: formData.img1, image: formData.img2 }]
+        //     };
 
-            const response = await axios.post("https://api-fatec.onrender.com/api/v1/product", jsonData);
+        //     const response = await axios.post("https://api-fatec.onrender.com/api/v1/product", jsonData);
 
-            refreshProducts();
-            setIsLoading(false);
-            handleClose();
-        } catch (error) {
-            console.log(error)
-            setIsLoading(false)
-        }
+        //     refreshProducts();
+        //     setIsLoading(false);
+        //     handleClose();
+        // } catch (error) {
+        //     console.log(error)
+        //     setIsLoading(false)
+        // }
     };
 
     return (
@@ -254,195 +178,21 @@ export default function AddCliente({ title, refreshProducts }) {
                     <div id="modal-modal-description" sx={{ mt: 3 }} >
                         {/* className={ isLoading ? styles.loading : '' } */}
 
-                        <form className={styles.form} onSubmit={handleSubmit}>
+                        <FormProduto
+                            typeForm={'save'}
+                            categorys={categorys}
 
-                            <CssTextField
-                                label="Nome"
-                                name="nome"
-                                fullWidth
-                                required
-                                sx={inputStyle}
-                                multiline
-                                minRows={2}
-                                maxRows={2}
-                                onChange={handleInputChange}
-                            />
-                            <CssTextField
-                                label="Descrição"
-                                name="descricao"
-                                fullWidth
-                                required
-                                multiline
-                                minRows={5}
-                                maxRows={5}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
+                            selectedCategory={selectedCategory}
+                            // setSelectedCategory={setSelectedCategory}
+                            handleSelectChange={handleSelectChange}
 
-                            <CssTextField
-                                label="Marca"
-                                name="marca"
-                                fullWidth
-                                required
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
+                            formData={formData}
+                            handleInputChange={handleInputChange}
 
-                            <CssTextField
-                                label="Preço"
-                                name="preco"
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    startAdornment: <InputAdornment position="start"> <small style={{ color: 'white' }} > R$  </small>  </InputAdornment>,
-                                }}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}
+                        />
 
-                            <CssTextField
-                                label="Estoque"
-                                name="estoque"
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > un  </small> </InputAdornment>,
-                                }}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <CssTextField
-                                label="Largura"
-                                name="largura"
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > cm  </small> </InputAdornment>,
-                                }}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <CssTextField
-                                label="Comprimento"
-                                name="comprimento"
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > cm  </small> </InputAdornment>,
-                                }}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <CssTextField
-                                label="Peso"
-                                name="peso"
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > kg  </small> </InputAdornment>,
-                                }}
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <CssTextField
-                                label="Altura"
-                                name="altura"
-                                fullWidth
-                                required
-                                InputProps={{
-                                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > cm  </small> </InputAdornment>,
-                                }}
-                                pattern="^[0-9]+(\.[0-9]+)?$"
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <FormControl fullWidth sx={{ marginBottom: '10px' }}>
-                                <InputLabel id="label-select" sx={{ color: 'white' }}>Categoria</InputLabel>
-                                <CssSelect
-                                    labelId="label-select"
-                                    id="select-category"
-                                    value={selectedCategory}
-                                    label="Categoria"
-                                    onChange={handleSelectChange}
-                                >
-                                    <MenuItem value={'10'}>Twenty</MenuItem>
-                                    <MenuItem value={'21'}>Twenty one</MenuItem>
-                                    <MenuItem value={'22'}>Twenty one and a half</MenuItem>
-                                </CssSelect>
-                            </FormControl>
-
-                            <CssTextField
-                                label="Url Imagem 1"
-                                name="img1"
-                                fullWidth
-                                required
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                            />
-
-                            <CssTextField
-                                label="Url Imagem 2"
-                                name="img2"
-                                fullWidth
-                                sx={inputStyle}
-                                onChange={handleInputChange}
-                                required
-                            />
-
-
-                            {/* <div className={ styles.div_file } >
-                                    <input 
-                                        type="file" 
-                                        name="file" 
-                                        hidden 
-                                        aria-label="Upload"
-                                        ref={fileInputRef}
-                                        onChange={(e) => {
-                                            const selectedFile = e.target.files[0];
-                                            
-                                            if (selectedFile) {
-                                                if (selectedFile.type === 'image/png' || selectedFile.type === 'image/jpeg') {
-                                                  console.log('Arquivo selecionado:', selectedFile);
-                                                } else {
-                                                  alert('Por favor, selecione uma imagem PNG ou JPEG.');
-                                                  fileInputRef.current.value = '';
-                                                }
-                                              }
-                                        }}
-                                        style={{ marginBottom: '10px'}}
-                                    />
-
-                                    <div className={styles.btn_file} onClick={handleButtonClick}>
-                                         <small>  Selecione a imagem do Produto </small>
-                                    </div>
-
-                                    <div className={styles.filesUpload}>
-                                        <div className={styles.file}> 
-                                            <img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.samsung.com%2Fbr%2Fsmartphones%2Fgalaxy-m%2Fgalaxy-m53-5g-blue-128gb-sm-m536bzbkzto%2F&psig=AOvVaw0Fibnry2I100Yrm5v1my3D&ust=1695155249091000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMD0q8X_tIEDFQAAAAAdAAAAABAE' alt='img'/>
-                                        </div>
-                                    </div>
-                                </div> */}
-
-                            <div className={styles.btnSubmit}>
-                                <Button sx={buttonCloseStyle} onClick={handleClose}>
-                                    <CloseIcon />
-                                </Button>
-
-                                <Button sx={buttonConfirmStyle} type='submit'>
-                                    <CheckIcon />
-                                </Button>
-                            </div>
-                        </form>
                     </div>
                 </Box>
             </Modal>

@@ -9,7 +9,7 @@ function CardsClientes({ customers }) {
         <p className={styles.id}>#{customer.id}</p>
         <div className={styles.customer}>
           <div className={styles.foto}>
-            <img src={customer.imgpath} className={styles.img} />
+            <img src={customer.image_path} className={styles.img} />
           </div>
           <div>
             <p>Nome: {customer.name}</p>
