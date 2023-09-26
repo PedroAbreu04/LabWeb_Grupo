@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 import Clientes from '../components/clientes/Clientes';
+import ViewCliente from '../components/clientes/ViewCliente';
 
 import Produto from '../components/produtos/Produto';
 import Produtos from '../components/produtos/Produtos';
@@ -26,7 +27,7 @@ function DashboardRoutes() {
                 {/* Url with Params  */}
 
                 <Route path="/produto/:id" element={<PrivateRoutes component={Produto} routeKey={key} />} />
-                <Route path="/cliente/:id" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+                <Route path="/cliente/:id" element={<PrivateRoutes component={ViewCliente} routeKey={key} />} />
             </Routes>
 
         </>
