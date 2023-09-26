@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { TextField, Select, MenuItem, InputAdornment, InputLabel, FormControl, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
@@ -113,7 +115,7 @@ function FormProduto({
 
             <CssTextField
                 label="Nome"
-                name="nome"
+                name="name"
                 fullWidth
                 required
                 sx={inputStyle}
@@ -121,11 +123,11 @@ function FormProduto({
                 minRows={2}
                 maxRows={2}
                 onChange={handleInputChange}
-                value={formData.nome}
+                value={formData.name}
             />
             <CssTextField
                 label="Descrição"
-                name="descricao"
+                name="desc"
                 fullWidth
                 required
                 multiline
@@ -133,23 +135,22 @@ function FormProduto({
                 maxRows={5}
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.descricao}
+                value={formData.desc}
             />
 
             <CssTextField
                 label="Marca"
-                name="marca"
+                name="brand"
                 fullWidth
                 required
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.marca}
+                value={formData.brand}
             />
 
             <CssTextField
                 label="Preço"
-                name="preco"
-                pattern="^[0-9]+(\.[0-9]+)?$"
+                name="price"
                 fullWidth
                 required
                 InputProps={{
@@ -157,13 +158,12 @@ function FormProduto({
                 }}
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.preco}
+                value={formData.price}
             />
 
             <CssTextField
                 label="Estoque"
-                name="estoque"
-                pattern="^[0-9]+(\.[0-9]+)?$"
+                name="stock"
                 fullWidth
                 required
                 InputProps={{
@@ -171,13 +171,25 @@ function FormProduto({
                 }}
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.estoque}
+                value={formData.stock}
+            />
+
+            <CssTextField
+                label="Unidade"
+                name="unity"
+                fullWidth
+                required
+                InputProps={{
+                    endAdornment: <InputAdornment position="start"> <small style={{ color: 'white' }} > unity  </small>  </InputAdornment>,
+                }}
+                sx={inputStyle}
+                onChange={handleInputChange}
+                value={formData.unity}
             />
 
             <CssTextField
                 label="Largura"
-                name="largura"
-                pattern="^[0-9]+(\.[0-9]+)?$"
+                name="width"
                 fullWidth
                 required
                 InputProps={{
@@ -185,27 +197,12 @@ function FormProduto({
                 }}
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.largura}
-            />
-
-            <CssTextField
-                label="Comprimento"
-                name="comprimento"
-                pattern="^[0-9]+(\.[0-9]+)?$"
-                fullWidth
-                required
-                InputProps={{
-                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > cm  </small> </InputAdornment>,
-                }}
-                sx={inputStyle}
-                onChange={handleInputChange}
-                value={formData.comprimento}
+                value={formData.width}
             />
 
             <CssTextField
                 label="Peso"
-                name="peso"
-                pattern="^[0-9]+(\.[0-9]+)?$"
+                name="weight"
                 fullWidth
                 required
                 InputProps={{
@@ -213,21 +210,20 @@ function FormProduto({
                 }}
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.peso}
+                value={formData.weight}
             />
 
             <CssTextField
                 label="Altura"
-                name="altura"
+                name="height"
                 fullWidth
                 required
                 InputProps={{
                     endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > cm  </small> </InputAdornment>,
                 }}
-                pattern="^[0-9]+(\.[0-9]+)?$"
                 sx={inputStyle}
                 onChange={handleInputChange}
-                value={formData.altura}
+                value={formData.height}
             />
 
             <FormControl fullWidth sx={{ marginBottom: '10px' }}>
@@ -243,8 +239,8 @@ function FormProduto({
                     {
                         categorys.map((category) => {
                             return (
-                                <MenuItem key={category.id_categoria} value={category.id_categoria}>
-                                    {category.nome}
+                                <MenuItem key={category.id} value={category.id}>
+                                    {category.name}
                                 </MenuItem>
                             )
                         })
@@ -259,6 +255,7 @@ function FormProduto({
                 required
                 sx={inputStyle}
                 onChange={handleInputChange}
+                value={formData.img1}
             />
 
             <CssTextField
@@ -268,8 +265,8 @@ function FormProduto({
                 sx={inputStyle}
                 onChange={handleInputChange}
                 required
+                value={formData.img2}
             />
-
 
             {/* <div className={ styles.div_file } >
         <input 
