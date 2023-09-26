@@ -8,19 +8,22 @@ import AddCliente from './AddCliente';
 import CardsClientes from "./CardsClientes"
 
 import TitleBaseDashboard from '../template/HeaderDashboard'
+import { useParams } from 'react-router-dom';
 
-const ViewCliente = (id) => {
+const ViewCliente = () => {
+
+    const { id } = useParams();
 
     const [dados, setdados] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const getPosts = async () => {
         try {
-            const response = await axios.get("https://129.148.27.50/api/cliente/" + id);
-            setdados(response.data);
-            setIsLoading(false);
+          const response = await axios.get(`https://129.148.27.50/api/cliente/${id}`);
+          setdados(response.data);
+          setIsLoading(false);
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
     };
 
@@ -28,7 +31,7 @@ const ViewCliente = (id) => {
         getPosts();
     }, []);
 
-    if (false) {
+    if (isLoading) {
         return (
             <div className={base.spinner}></div>
         );
@@ -49,7 +52,7 @@ const ViewCliente = (id) => {
             <div className={styles.clienteInfo}>
 
             <div className={styles.clienteImage}>
-            <img src={'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix'}/>
+            <img src={dados.image_path}/>
             </div>
 
             <div className={styles.column}>
