@@ -58,11 +58,12 @@ const buttonAddStyle = {
 
 export default function AddCliente({ title, refreshProducts }) {
 
-    // Modal - Ignore
+    //  Modal - Ignore
+
     const [open, setOpen] = React.useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [categorys, setCategorys] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState();
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -81,23 +82,24 @@ export default function AddCliente({ title, refreshProducts }) {
     };
 
 
-    // const handleButtonClick = () => {
-    //     // Ao clicar na div, dispara o clique no input de arquivo
-    //     fileInputRef.current.click();
-    // };
+    const handleButtonClick = () => {
+        fileInputRef.current.click();
+    };
 
-    // Form Data 
+    //  Form Data 
+
     const [formData, setFormData] = useState({
-        nome: '',
-        descricao: '',
-        marca: '',
-        preco: '',
-        estoque: '',
-        largura: '',
-        comprimento: '',
-        peso: '',
-        altura: '',
+        name: '',
+        desc: '',
+        brand: '',
+        price: '',
+        stock: '',
+        height: '',
+        unity: '',
+        width: '',
+        weight: '',
         id_categoria: '',
+        images: [{ image: '' }, { image: '' }],
         img1: '',
         img2: ''
     });
@@ -108,52 +110,58 @@ export default function AddCliente({ title, refreshProducts }) {
         const apiUrl = 'https://api-fatec.onrender.com/api/v1/category';
         axios(apiUrl)
             .then((response) => {
-                setIsLoading(false);
                 setCategorys(response.data);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error('Erro ao consumir a API:', error);
             });
     };
 
-    // useEffect(() => {
-    //     getCategory();
-    // }, []);
+    useEffect(() => {
+        getCategory();
+    }, []);
 
 
     // Funciton Add Product 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
 
-        // setIsLoading(true)
+        setIsLoading(true)
 
+        try {
+            const jsonData = {
+                name: formData.name,
+                desc: formData.desc,
+                brand: formData.brand,
+                price: parseFloat(formData.price),
+                stock: parseInt(formData.stock),
+                unity: formData.unity,
+                width: parseFloat(formData.width),
+                weight: parseFloat(formData.weight),
+                height: parseFloat(formData.height),
+                id_categoria: parseInt(formData.id_categoria),
+                images: [{ image: formData.img1 }, { image: formData.img2 }]
+            };
 
-        // try {
-        //     const jsonData = {
-        //         nome: formData.nome,
-        //         descricao: formData.descricao,
-        //         marca: formData.marca,
-        //         preco: parseFloat(formData.preco),
-        //         estoque: parseInt(formData.estoque),
-        //         largura: parseFloat(formData.largura),
-        //         comprimento: parseFloat(formData.comprimento),
-        //         peso: parseFloat(formData.peso),
-        //         altura: parseFloat(formData.altura),
-        //         id_categoria: parseInt(formData.id_categoria),
-        //         images: [{ image: formData.img1, image: formData.img2 }]
-        //     };
+            const response = await axios.post("https://api-fatec.onrender.com/api/v1/product", jsonData);
+            if (response.status == 201) {
 
-        //     const response = await axios.post("https://api-fatec.onrender.com/api/v1/product", jsonData);
+                // tirar isso, api dos cara ta bugada. 
 
-        //     refreshProducts();
-        //     setIsLoading(false);
-        //     handleClose();
-        // } catch (error) {
-        //     console.log(error)
-        //     setIsLoading(false)
-        // }
+                setTimeout(function () {
+                    refreshProducts();
+                    setIsLoading(false);
+                    handleClose();
+                }, 3000);
+
+            }
+
+        } catch (error) {
+            console.log(error)
+            setIsLoading(false)
+        }
     };
 
     return (
@@ -175,15 +183,14 @@ export default function AddCliente({ title, refreshProducts }) {
                         Cadastrar {title}
                     </Typography>
 
-                    <div id="modal-modal-description" sx={{ mt: 3 }} >
-                        {/* className={ isLoading ? styles.loading : '' } */}
+                    <div id="modal-modal-description" sx={{ mt: 3 }} className={isLoading ? styles.loading : ''}>
 
                         <FormProduto
                             typeForm={'save'}
                             categorys={categorys}
 
                             selectedCategory={selectedCategory}
-                            // setSelectedCategory={setSelectedCategory}
+                            setSelectedCategory={setSelectedCategory}
                             handleSelectChange={handleSelectChange}
 
                             formData={formData}

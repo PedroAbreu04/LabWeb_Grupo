@@ -11,13 +11,15 @@ function PrivateRoutes({ component: Component, routeKey }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuth, setIsAuth] = useState(true);
 
-  // const jsonToken = {
-  //   token: localStorage.getItem("token"),
-  // }
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${ localStorage.getItem("token") }` // Adiciona o token ao cabeçalho de autorização
+  //   }
+  // };
 
   // const authToken = async () => {
   //   try {
-  //     const response = await axios.post("https://api-login-cdv6.onrender.com/api/v1/auth/token", jsonToken);
+  //     const response = await axios.post("https://api-login-cdv6.onrender.com/api/v1/auth/token", config);
   //     setIsAuth(response.data.validateToken);
   //   } catch (error) {
   //     console.log(error.response.data.message);
