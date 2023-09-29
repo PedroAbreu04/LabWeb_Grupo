@@ -4,7 +4,6 @@ import axios from "axios";
 
 import base from "../../module.css/template/BaseDashboard.module.css"
 
-import AddCliente from './AddCliente';
 import CardsClientes from "./CardsClientes"
 
 import TitleBaseDashboard from '../template/HeaderDashboard'
@@ -39,10 +38,6 @@ function Clientes() {
             <TitleBaseDashboard title={'Clientes'} />
 
             <div className={base.content}>
-
-                <div>
-                    <AddCliente title={'Cliente'} />
-                </div>
 
                 <div className={base.cards}>
                     <CardsClientes customers={ dados } />

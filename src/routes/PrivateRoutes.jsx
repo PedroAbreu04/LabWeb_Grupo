@@ -6,6 +6,7 @@ function PrivateRoutes({ component: Component, routeKey }) {
 
   const[isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
+  const [isRole, setIsRole] = useState(false);
 
   const config = {
     headers: {
@@ -17,6 +18,7 @@ function PrivateRoutes({ component: Component, routeKey }) {
     try {
       const response = await axios.get("https://api-login-cdv6.onrender.com/api/v1/auth/token", config);
       setIsAuth(response.data.validateToken);
+      setIsRole(response.data.role)
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -29,7 +31,7 @@ function PrivateRoutes({ component: Component, routeKey }) {
   }, [routeKey]);
 
   if (!isLoading) {
-    return (isAuth) ? <Component /> : <NotAuthenticated />
+    return (isAuth) ? <Component role={isRole}/> : <NotAuthenticated />
   }
 }
 

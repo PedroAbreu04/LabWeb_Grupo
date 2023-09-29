@@ -1,9 +1,9 @@
 import DashboardRoutes from "../routes/DashboardRoutes"
 
-function Dashboard() {
+function Dashboard({role}) {
   return (
    <>
-    <DashboardRoutes />
+    <DashboardRoutes role={role}/>
    </>
   );
 }

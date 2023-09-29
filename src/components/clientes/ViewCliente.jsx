@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import base from "../../module.css/template/BaseDashboard.module.css";
-import AddCliente from './AddCliente';
-import CardsClientes from "./CardsClientes"
 
 import TitleBaseDashboard from '../template/HeaderDashboard'
 import { useParams } from 'react-router-dom';

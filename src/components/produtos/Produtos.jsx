@@ -7,7 +7,7 @@ import TitleBaseDashboard from '../template/HeaderDashboard'
 import AddProduct from './AddProduct';
 import CardsProdutos from './CardsProdutos'
 
-function Produtos() {
+function Produtos({role}) {
 
   const [dados, setdados] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +42,7 @@ function Produtos() {
       <div className={base.content}>
 
         <div>
-          <AddProduct title={"Produtos"} refreshProducts={dataTable}/>
+          <AddProduct title={"Produtos"} refreshProducts={dataTable} role={role}/>
           
         </div>
 

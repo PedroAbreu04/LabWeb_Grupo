@@ -12,7 +12,7 @@ import BaseDashboard from '../components/template/BaseDashboard';
 import Navbar from '../components/Navbar';
 import PrivateRoutes from './PrivateRoutes';
 
-function DashboardRoutes() {
+function DashboardRoutes({role}) {
 
     const [key, setKey] = useState(0);
 
@@ -20,9 +20,9 @@ function DashboardRoutes() {
         <>
             <Navbar />
             <Routes>
-                <Route path="/" element={<PrivateRoutes component={BaseDashboard} routeKey={key} />} />
+                <Route path="/" element={<PrivateRoutes component={BaseDashboard} routeKey={key}  />} />
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
-                <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} />} />
+                <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role}/>} />
 
                 {/* Url with Params  */}
 
