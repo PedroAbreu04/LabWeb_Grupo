@@ -21,6 +21,7 @@ import AddIcon from "@mui/icons-material/Add";
 import styles from "../../module.css/produtos/AddProduto.module.css";
 import base from "../../module.css/template/BaseDashboard.module.css";
 import FormProduto from "./FormProduto";
+import BaseModal from "../template/BaseModal";
 
 const style = {
     position: "absolute",
