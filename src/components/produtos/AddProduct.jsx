@@ -20,6 +20,7 @@ import AddIcon from "@mui/icons-material/Add";
 import styles from "../../module.css/produtos/AddProduto.module.css";
 import base from "../../module.css/template/BaseDashboard.module.css";
 import FormProduto from "./FormProduto";
+import BaseModal from "../template/BaseModal";
 
 const style = {
   position: "absolute",
@@ -52,21 +53,6 @@ const style = {
   },
 };
 
-const styleNot = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  display: "flex",
-  width: "300px",
-  height: "200px",
-  backgroundColor: "rgb(22, 27, 34)",
-  flexDirection: "column",
-  textAlign: "center",
-  borderRadius: "15px",
-  padding: "10px 0",
-};
-
 const buttonAddStyle = {
   backgroundColor: "rgb(34, 143, 34)",
   borderRadius: "15px",
@@ -85,7 +71,6 @@ export default function AddCliente({ title, refreshProducts, role }) {
   //  Modal - Ignore
 
   const [open, setOpen] = React.useState(false);
-  const [openNot, setOpenNot] = React.useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [categorys, setCategorys] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -93,8 +78,8 @@ export default function AddCliente({ title, refreshProducts, role }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleOpenNot = () => setOpenNot(true);
-  const handleCloseNot = () => setOpenNot(false);
+  const [openModal, setOpenModal] = useState(false)
+  const setTrueModal = () => setOpenModal(true)
 
   const fileInputRef = useRef(null);
 
@@ -194,13 +179,14 @@ export default function AddCliente({ title, refreshProducts, role }) {
     <>
       <div className={base.div_btn_add}>
         <Button
-          onClick={role === "ADMIN" ? handleOpen : handleOpenNot}
+          onClick={role === "ADMIN" ? handleOpen : setTrueModal }
           className={styles.btn_add}
           sx={buttonAddStyle}
         >
           <AddIcon />
         </Button>
       </div>
+      
 
       <Modal
         open={open}
@@ -236,33 +222,7 @@ export default function AddCliente({ title, refreshProducts, role }) {
           </div>
         </Box>
       </Modal>
-
-      <Modal open={openNot} onClose={handleCloseNot}>
-        <Box sx={styleNot}>
-          <Typography
-            component="h1"
-            style={{
-              fontSize: "24px",
-              borderBottom: "2px solid white",
-              paddingBottom: "40px",
-              width: "100%",
-            }}
-          >
-            Permição negada
-          </Typography>
-
-          <Typography
-            id="modal-modal-title"
-            component="h3"
-            style={{
-              paddingTop: "50px",
-              color: "white",
-            }}
-          >
-            Você não tem permissão para essa função.
-          </Typography>
-        </Box>
-      </Modal>
+      <BaseModal isOpen={openModal} setCloseModal={() => setOpenModal(!openModal)} titulo={'Permição negada'} texto={'Você não tem permissão para essa função.'}/>
     </>
   );
 }
