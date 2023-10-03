@@ -4,19 +4,31 @@ import Button from '@mui/material/Button';
 
 
 import { useEffect, useState } from "react";
-import { Form, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import base from "../../module.css/template/BaseDashboard.module.css";
 import styles from "../../module.css/produtos/Produto.module.css";
 import FormProduto from './FormProduto';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/effect-fade';
+
 function Produto() {
-    const aux = 0;
+    const [swiperKey, setSwiperKey] = useState(0); // Inicialize a chave como um estado
+
     const { id } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [categorys, setCategorys] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedFiles, setSelectedFiles] = useState([]);
 
     const handleClose = () => { console.log('fechei') };
 
@@ -67,13 +79,10 @@ function Produto() {
             };
 
             const response = await axios.put(`https://api-fatec.onrender.com/api/v1/product/${id}`, jsonData);
-            
-            console.log(response.data)
 
-            setTimeout(function () {
-                dataTable();
-                setIsLoading(false);
-            }, 1500);
+            setTimeout(() => {
+                setSwiperKey((prevKey) => prevKey + 1);
+            }, 1500)
 
         } catch (error) {
             console.log(error)
@@ -108,6 +117,7 @@ function Produto() {
                     formData.price = data.price;
                     formData.stock = data.stock;
                     formData.id_categoria = data.id_categoria.id;
+                    formData.images = data.images
                     formData.img1 = data.images[0].image_path;
                     formData.img2 = data.images[1].image_path;
 
@@ -136,7 +146,7 @@ function Produto() {
     useEffect(() => {
         dataTable()
         getCategory()
-    }, []);
+    }, [swiperKey]);
 
     if (isLoading) {
         return (
@@ -153,12 +163,26 @@ function Produto() {
 
                     <h1> Produto </h1>
 
-                    <div className={styles.productImage}>
-                        {formData.img1.length > 0 ? (
-                            <img alt="Produto" src={`${formData.img1}`} />
-                        ) : (
-                            <img alt="Produto" src='/images/img_product.png' className={styles.noImgProduct} />
-                        )}
+                    <div className={styles.divSlider}>
+                        <Swiper
+                            key={swiperKey}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                            navigation
+                            modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        >
+                            {formData.images.map((image) => (
+                                <SwiperSlide key={image.id}>
+                                    <div className={styles.divImg}>
+                                        <img
+                                            alt="img"
+                                            src={image.image_path}
+                                            className={styles.img}
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
 
                     <div className={styles.infoProducts}>
@@ -176,6 +200,9 @@ function Produto() {
 
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}
+
+                            selectedFiles={selectedFiles}
+                            setSelectedFiles={setSelectedFiles}
                         />
                     </div>
                 </div>

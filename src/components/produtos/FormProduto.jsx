@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import styles from "../../module.css/produtos/AddProduto.module.css"
+import Upload from './Upload';
 
 const CssTextField = styled(TextField)({
     '& label': {
@@ -108,6 +109,8 @@ function FormProduto({
 
     handleSubmit,
     handleClose,
+
+    selectedFiles, setSelectedFiles
 }) {
 
     return (
@@ -248,6 +251,13 @@ function FormProduto({
                 </CssSelect>
             </FormControl>
 
+            {typeForm != 'update' ? (
+                <Upload
+                    selectedFiles={selectedFiles}
+                    setSelectedFiles={setSelectedFiles}
+                />
+            ) : null}
+
             <CssTextField
                 label="Url Imagem 1"
                 name="img1"
@@ -268,38 +278,6 @@ function FormProduto({
                 value={formData.img2}
             />
 
-            {/* <div className={ styles.div_file } >
-        <input 
-            type="file" 
-            name="file" 
-            hidden 
-            aria-label="Upload"
-            ref={fileInputRef}
-            onChange={(e) => {
-                const selectedFile = e.target.files[0];
-                
-                if (selectedFile) {
-                    if (selectedFile.type === 'image/png' || selectedFile.type === 'image/jpeg') {
-                      console.log('Arquivo selecionado:', selectedFile);
-                    } else {
-                      alert('Por favor, selecione uma imagem PNG ou JPEG.');
-                      fileInputRef.current.value = '';
-                    }
-                  }
-            }}
-            style={{ marginBottom: '10px'}}
-        />
-
-        <div className={styles.btn_file} onClick={handleButtonClick}>
-             <small>  Selecione a imagem do Produto </small>
-        </div>
-
-        <div className={styles.filesUpload}>
-            <div className={styles.file}> 
-                <img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.samsung.com%2Fbr%2Fsmartphones%2Fgalaxy-m%2Fgalaxy-m53-5g-blue-128gb-sm-m536bzbkzto%2F&psig=AOvVaw0Fibnry2I100Yrm5v1my3D&ust=1695155249091000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMD0q8X_tIEDFQAAAAAdAAAAABAE' alt='img'/>
-            </div>
-        </div>
-    </div> */}
 
             <div className={styles.btnSubmit}>
                 <Button sx={buttonCloseStyle} onClick={handleClose}>

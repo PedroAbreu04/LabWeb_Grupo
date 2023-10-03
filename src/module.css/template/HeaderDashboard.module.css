@@ -113,6 +113,10 @@ h1 {
         margin-bottom:10px;
     }
 
+    h1.title{
+        display: none;
+    }
+
     .nav {
         justify-content: center;
     }
