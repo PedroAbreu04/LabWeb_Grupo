@@ -171,7 +171,7 @@ export default function AddCliente({ title, refreshProducts, role }) {
                 width: parseFloat(formData.width),
                 weight: parseFloat(formData.weight),
                 height: parseFloat(formData.height),
-                id_categoria: parseInt(formData.id_categoria),
+                category_id: parseInt(formData.id_categoria),
                 images: [{ image: formData.img1 }, { image: formData.img2 }],
             };
 

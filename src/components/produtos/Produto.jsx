@@ -25,6 +25,7 @@ function Produto() {
     const [swiperKey, setSwiperKey] = useState(0); // Inicialize a chave como um estado
 
     const { id } = useParams();
+
     const [isLoading, setIsLoading] = useState(true);
     const [categorys, setCategorys] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -74,7 +75,7 @@ function Produto() {
                 unity: formData.unity,
                 weight: parseFloat(formData.weight),
                 height: parseFloat(formData.height),
-                id_categoria: parseInt(formData.id_categoria),
+                category_id: parseInt(formData.id_categoria),
                 images: [{ image: formData.img1 }, { image: formData.img2 }]
             };
 
@@ -116,12 +117,12 @@ function Produto() {
                     formData.brand = data.brand;
                     formData.price = data.price;
                     formData.stock = data.stock;
-                    formData.id_categoria = data.id_categoria.id;
+                    formData.id_categoria = data.category_.id;
                     formData.images = data.images
                     formData.img1 = data.images[0].image_path;
                     formData.img2 = data.images[1].image_path;
 
-                    setSelectedCategory(data.id_categoria.id)
+                    setSelectedCategory(data.category_.id)
                     setIsLoading(false);
 
                     console.log(formData)

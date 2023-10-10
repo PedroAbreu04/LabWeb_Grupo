@@ -1,0 +1,164 @@
+.p_title {
+    position: relative;
+    text-align: center;
+    color: #FF6701;
+    font-size: 20px;
+}
+
+.p_title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 350px;
+    height: 2px;
+    background-color: #FF6701;
+}
+
+.container_1 {
+    width: 100%;
+    padding: 50px 50px 10px 50px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+    font-size: 22px;
+
+    gap: 30px;
+}
+
+.div_img {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.div_img img {
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255);
+
+    width: 250px;
+    height: 250px;
+
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+.div_img small {
+    color: white;
+}
+
+.div_img small.active {
+    color: white;
+    padding: 5px 30px;
+    background-color: rgb(31, 172, 45);
+    border-radius: 10px;
+}
+
+.div_img small.disabled {
+    color: white;
+    padding: 5px 30px;
+    background-color: rgb(238, 43, 43);
+    border-radius: 10px;
+}
+
+.div_info {
+    width: 100%;
+    max-width: 450px;
+    height: 267px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.container_2 {
+    width: 100%;
+    padding: 10px 50px 50px 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    font-size: 22px;
+    gap: 10px;
+}
+
+.container_2 .div_order {
+    width: 48%;
+}
+
+.container_2 .div_address {
+    width: 48%;
+}
+
+.content{
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 15px;
+
+    height: 300px;
+    overflow-y: auto;
+}
+
+.noData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: rgb(182, 178, 178, 0.5);
+    border-radius: 6px;
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(182, 178, 178, 0.8);
+}
+
+.info_address{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+
+    color: rgb(255, 255, 255);
+}
+
+
+
+@media (max-width: 767px) {
+    .container_1 {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .container_2 {
+        padding: 10px;
+    }
+    .content{
+        padding: 20px;
+    }
+
+    .container_2 .div_order {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .container_2 .div_address {
+        width: 100%;
+        max-width: 500px;
+    }
+}

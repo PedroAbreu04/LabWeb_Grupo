@@ -44,6 +44,7 @@ function Login() {
 
   return (
     <div className={styles.main_login}>
+
       <div className={styles.login}>
 
         <h1>Login</h1>
@@ -60,14 +61,7 @@ function Login() {
 
         <button onClick={login} className={styles.btn_login}>Entrar</button>
       </div>
-
-      <div className={styles.right_login}>
-        <img
-          src="/images/img_login.svg"
-          className={styles.img_login}
-          alt="Pessoa abrindo uma porta"
-        />
-      </div>
+      
     </div>
   );
 }
