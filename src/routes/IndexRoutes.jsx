@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login';
-import NotFound from '../pages/NotFound'
+import NotFound from '../pages/NotFound';
 
 
 import PrivateRoutes from './PrivateRoutes';
