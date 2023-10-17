@@ -19,7 +19,7 @@ function BaseDashboard() {
         <div className={base.background}>
             <TitleBaseDashboard title={'Base'} />
 
-            <div className={base.content}>
+            <div className={`${base.content} ${base.flip}`} >
                 <BaseAddItem title={"Base"}/>
 
                 <div className={base.cards}>

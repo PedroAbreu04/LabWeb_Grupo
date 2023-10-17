@@ -116,7 +116,7 @@ function FormProduto({
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
 
-            {/* <CssTextField
+            <CssTextField
                 label="Nome"
                 name="name"
                 fullWidth
@@ -127,7 +127,7 @@ function FormProduto({
                 maxRows={2}
                 onChange={handleInputChange}
                 value={formData.name}
-            /> */}
+            />
             
             <CssTextField
                 label="Descrição"

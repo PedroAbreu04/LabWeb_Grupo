@@ -37,10 +37,10 @@ function Clientes() {
         <div className={base.background}>
             <TitleBaseDashboard title={'Clientes'} />
 
-            <div className={base.content}>
+            <div className={`${base.content} ${base.flip}`}>
 
                 <div className={base.cards}>
-                    <CardsClientes customers={ dados } />
+                    <CardsClientes customers={dados} />
                 </div>
             </div>
         </div>

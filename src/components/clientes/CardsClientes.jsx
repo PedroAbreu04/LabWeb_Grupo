@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import styles from "../../module.css/clientes/CardsClientes.module.css";
+import base from "../../module.css/template/BaseDashboard.module.css"
 
 function CardsClientes({ customers }) {
   return customers.map((customer) => (
 
-    <div className={`${styles.container} ${customer} ${!customer.status ? styles.disabledCustomer : ""} `} key={customer.id}>
+    <div className={`${styles.container} ${customer} ${base.hover} ${!customer.status ? styles.disabledCustomer : ""} `} key={customer.id}>
       <div className={styles.cardBody}>
         <p className={styles.id}>#{customer.id}</p>
         <div className={styles.customer}>
