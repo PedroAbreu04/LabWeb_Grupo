@@ -38,7 +38,7 @@ function Pedidos(){
         <div className={base.background}>
         <TitleBaseDashboard title={'Pedidos'} />
 
-        <div className={base.content}>
+        <div className={`${base.content} ${base.flip}`}>
 
             <div className={base.cards}>
                 <CardsPedidos pedidos={ dados } />

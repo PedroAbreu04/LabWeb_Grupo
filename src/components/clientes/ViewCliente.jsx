@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 import base from "../../module.css/template/BaseDashboard.module.css";
 import styles from "../../module.css/clientes/ViewCliente.module.css"
@@ -72,7 +73,7 @@ const ViewCliente = () => {
       <TitleBaseDashboard title={'Cliente'} />
 
       <div className={base.content}>
-        <p className={styles.p_title}>  Informações do Cliente </p>
+        {/* <p className={styles.p_title}>  Informações do Cliente </p> */}
 
         <div className={styles.container_1}>
 
@@ -135,9 +136,28 @@ const ViewCliente = () => {
 
           <div className={styles.div_order}>
             <p className={styles.p_title}>  Pedidos </p>
-            <div className={`${styles.content} ${data.orders != null ? '' : styles.noData}`}>
-              {data.orders != null ? (
-                <p> penes </p>
+            <div className={`${styles.content} ${data.sale != null ? '' : styles.noData}`}>
+              {data.sale != null ? (
+                data.sale.map((x, index) => (
+                  <div className={styles.container_product} key={index}>
+                    <div className={styles.product}>
+                      <div className={styles.product_image}>
+                        <img src={x.sale_item[0].product.product_img[0].image_path} alt="" width="100%" />
+                      </div>
+
+                      <div className={styles.info_product}>
+                        <p> ID: {x.id}  </p>
+                        <p> Status: {x.status}</p>
+                        <p> Total: {x.total}</p>
+                        <p> Ultima atualização: {x.updated_at}</p>
+                      </div>
+                    </div>
+
+                    <div className={styles.div_link}>
+                      <Link className={styles.btnVi} to={`/dashboard/pedido/${x.id}/${x.status}`}>Visualizar Pedido</Link>
+                    </div>
+                  </div>
+                ))
               ) : (
                 "Esse cliente ainda não realizou pedidos"
               )}
@@ -146,7 +166,7 @@ const ViewCliente = () => {
 
           <div className={styles.div_address}>
             <p className={styles.p_title}>  Endereços </p>
-            <div className={`${styles.content} ${data.adresses.length != 0? '' : styles.noData}`}>
+            <div className={`${styles.content} ${data.adresses.length != 0 ? '' : styles.noData}`}>
               {
                 data.adresses.length != 0 ? (
                   data.adresses.map((address, index) => (
@@ -154,7 +174,7 @@ const ViewCliente = () => {
                       key={index}
                       sx={{
                         marginBottom: '10px',
-                        backgroundColor: 'rgb(0, 0, 0, 0.7)',
+                        backgroundColor: 'rgb(0, 0, 0, 0.2)',
                         color: 'white',
                         padding: '10px'
                       }}

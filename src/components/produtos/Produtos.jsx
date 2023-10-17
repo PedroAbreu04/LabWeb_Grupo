@@ -39,11 +39,10 @@ function Produtos({role}) {
     <div className={base.background}>
       <TitleBaseDashboard title={'Produtos'} />
 
-      <div className={base.content}>
+      <div className={`${base.content} ${base.flip}`}>
 
         <div>
           <AddProduct title={"Produtos"} refreshProducts={dataTable} role={role}/>
-          
         </div>
 
         <div className={base.cards}>

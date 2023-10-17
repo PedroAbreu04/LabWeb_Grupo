@@ -3,12 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import styles from '../../module.css/produtos/CardsProdutos.module.css';
+import base from "../../module.css/template/BaseDashboard.module.css"
 
 const CardsProdutos = ({ products }) => {
 
   return (
     products.map((product) => (
-      <div className={styles.produto} key={product.id}>
+      <div  className={`${styles.produto} ${base.hover}`}  key={product.id} >
         <div className={styles.cardBody}>
           <p className={styles.id}>{`#${product.id}`}</p>
           <h1>{product.name}</h1>

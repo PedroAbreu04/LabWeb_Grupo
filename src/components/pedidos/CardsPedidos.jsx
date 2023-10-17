@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import styles from "../../module.css/clientes/CardsClientes.module.css";
+import base from "../../module.css/template/BaseDashboard.module.css"
+
 import colorPedido from "../../module.css/pedidos/CardsPedido.module.css"
 
 function CardsPedidos({ pedidos }) {
 
   return pedidos.map((pedido) => (
 
-    <div className={`${styles.container} ${pedido} ${!pedido.status ? styles.disabledCustomer : ""} `} key={pedido.id}>
+    <div className={`${styles.container} ${pedido} ${base.hover} ${!pedido.status ? styles.disabledCustomer : ""} `} key={pedido.id}>
       <div className={styles.cardBody}>
         <p className={styles.id}>#{pedido.id}</p>
         <div className={styles.customer}>

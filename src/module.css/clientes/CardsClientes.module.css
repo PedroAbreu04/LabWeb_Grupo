@@ -5,6 +5,8 @@
     
     border-radius: 10px;
     width: 260px;
+    height: max-content;
+
     color: white;
     padding: 0;
 }
