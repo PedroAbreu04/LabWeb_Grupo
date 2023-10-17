@@ -54,6 +54,7 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
+                    to="/dashboard/pedidos"
                         className={`${styles.items} 
                         ${activeLink === 'link2' ? styles.active : ''}`} 
                         onClick={() => { handleLinkClick('link2'); closeNavbarMobile(); } }

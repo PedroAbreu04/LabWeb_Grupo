@@ -1,0 +1,15 @@
+.neutro{
+    color: rgb(88, 178, 206);
+}
+
+.bom{
+    color: rgb(112, 223, 102);
+}
+
+.ruim{
+    color: red;
+}
+
+.erro{
+    color: yellow;
+}

@@ -1,0 +1,56 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    border: 3px black solid;
+    border-radius: 10px;
+    background-color: rgb(22, 27, 34);
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+
+    border-bottom: 3px black solid;
+    border-radius: 10px;
+}
+
+.subtitle{
+    color: white;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+.botoes{
+    padding: 10px;
+}
+
+.botoes button{
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+
+.retroceder:hover{
+    color: red;
+    text-decoration: underline;
+}
+
+.cancelar:hover{
+    color: yellow;
+    text-decoration: underline;
+}
+
+.avancar:hover{
+    color: green;
+    text-decoration: underline;
+}

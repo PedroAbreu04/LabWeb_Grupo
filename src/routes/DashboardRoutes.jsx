@@ -7,6 +7,9 @@ import ViewCliente from '../components/clientes/ViewCliente';
 import Produto from '../components/produtos/Produto';
 import Produtos from '../components/produtos/Produtos';
 
+import Pedidos from '../components/pedidos/Pedidos'
+import ViewPedido from '../components/pedidos/ViewPedido';
+
 import BaseDashboard from '../components/template/BaseDashboard';
 
 import Navbar from '../components/Navbar';
@@ -23,11 +26,13 @@ function DashboardRoutes({role}) {
                 <Route path="/" element={<PrivateRoutes component={BaseDashboard} routeKey={key}  />} />
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
                 <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role}/>} />
+                <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key}/>} />
 
                 {/* Url with Params  */}
 
                 <Route path="/produto/:id" element={<PrivateRoutes component={Produto} routeKey={key} />} />
                 <Route path="/cliente/:id" element={<PrivateRoutes component={ViewCliente} routeKey={key} />} />
+                <Route path="/pedido/:id/:status" element={<PrivateRoutes component={ViewPedido} routeKey={key} />} />
             </Routes>
 
         </>
