@@ -1,4 +1,5 @@
 import styles from '../module.css/Login.module.css'
+
 function Login() {
 
   function login() {
@@ -45,8 +46,10 @@ function Login() {
   return (
     <div className={styles.main_login}>
 
-      <div className={styles.login}>
-
+     <div className={styles.login}>
+      <div className={styles.logo}>
+        <img src="/images/logo.png" alt=""  className={styles.img_logo} />
+      </div>
         <h1>Login</h1>
 
         <div className={styles.textefield}>
@@ -60,8 +63,13 @@ function Login() {
         <span id="messageError" className={styles.messageError}></span>
 
         <button onClick={login} className={styles.btn_login}>Entrar</button>
-      </div>
       
+      </div>
+
+      <div className={styles.right_login}>
+        <img src="/images/img_login.svg" alt="" className={styles.img_login}/>
+      </div>
+    
     </div>
   );
 }
