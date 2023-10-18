@@ -5,21 +5,14 @@ import Button from '@mui/material/Button';
 
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import Carrousel from './Carrousel'
 import axios from 'axios';
 
 import base from "../../module.css/template/BaseDashboard.module.css";
 import styles from "../../module.css/produtos/Produto.module.css";
 import FormProduto from './FormProduto';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/effect-fade';
 
 function Produto() {
     const [swiperKey, setSwiperKey] = useState(0); // Inicialize a chave como um estado
@@ -56,8 +49,6 @@ function Produto() {
         weight: '',
         id_categoria: {},
         images: [],
-        img1: '',
-        img2: ''
     });
 
     const handleSubmit = async (e) => {
@@ -119,8 +110,6 @@ function Produto() {
                     formData.stock = data.stock;
                     formData.id_categoria = data.category_.id;
                     formData.images = data.images
-                    formData.img1 = data.images[0].image_path;
-                    formData.img2 = data.images[1].image_path;
 
                     setSelectedCategory(data.category_.id)
                     setIsLoading(false);
@@ -165,25 +154,7 @@ function Produto() {
                     <h1> Produto </h1>
 
                     <div className={styles.divSlider}>
-                        <Swiper
-                            key={swiperKey}
-                            slidesPerView={1}
-                            pagination={{ clickable: true }}
-                            navigation
-                            modules={[Navigation, Pagination, Scrollbar, A11y]}
-                        >
-                            {formData.images.map((image) => (
-                                <SwiperSlide key={image.id}>
-                                    <div className={styles.divImg}>
-                                        <img
-                                            alt="img"
-                                            src={image.image_path}
-                                            className={styles.img}
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <Carrousel swiperKey={swiperKey} data={formData.images} />
                     </div>
 
                     <div className={styles.infoProducts}>

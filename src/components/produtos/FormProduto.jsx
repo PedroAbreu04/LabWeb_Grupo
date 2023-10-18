@@ -259,7 +259,7 @@ function FormProduto({
                 />
             ) : null}
 
-            <CssTextField
+            {/* <CssTextField
                 label="Url Imagem 1"
                 name="img1"
                 fullWidth
@@ -277,7 +277,7 @@ function FormProduto({
                 onChange={handleInputChange}
                 required
                 value={formData.img2}
-            />
+            /> */}
 
             <div className={styles.btnSubmit}>
                 <Button sx={buttonCloseStyle} onClick={handleClose}>

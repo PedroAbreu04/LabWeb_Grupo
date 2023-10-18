@@ -99,7 +99,6 @@
 
 .file img{ 
     max-width: 20%;
-    min-width: 15%;
 
     height: 100%;
     
@@ -145,4 +144,10 @@ p.fileSize{
 
     color: rgba(220,53,69,255);
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .file img{ 
+        max-width: 30%;
+    }
 }

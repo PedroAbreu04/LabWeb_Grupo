@@ -130,9 +130,7 @@ export default function AddCliente({ title, refreshProducts, role }) {
         width: "",
         weight: "",
         id_categoria: "",
-        images: [{ image: "" }, { image: "" }],
-        img1: "",
-        img2: "",
+        images: "",
     });
 
     // Category
@@ -172,8 +170,11 @@ export default function AddCliente({ title, refreshProducts, role }) {
                 weight: parseFloat(formData.weight),
                 height: parseFloat(formData.height),
                 category_id: parseInt(formData.id_categoria),
-                images: [{ image: formData.img1 }, { image: formData.img2 }],
+                images: selectedFiles,
             };
+
+            console.log(jsonData)
+
 
             const response = await axios.post(
                 "https://api-fatec.onrender.com/api/v1/product",
