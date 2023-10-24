@@ -35,6 +35,7 @@ function Pedidos(){
 
 
     return(
+        
         <div className={base.background}>
         <TitleBaseDashboard title={'Pedidos'} />
 
@@ -45,7 +46,6 @@ function Pedidos(){
             </div>
         </div>
     </div>
-
     )
 }
 

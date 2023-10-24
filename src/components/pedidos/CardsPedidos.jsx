@@ -21,7 +21,7 @@ function CardsPedidos({ pedidos }) {
       </div>
 
       <div className={styles.botao}>
-        <Link className={styles.btnVi}  to={`/dashboard/pedido/${pedido.id}/${pedido.status}`}>Mudar Status</Link>
+        <Link className={styles.btnVi}  to={`/dashboard/pedido/${pedido.id}`}>Visualizar Pedido</Link>
       </div>
 
     </div>
