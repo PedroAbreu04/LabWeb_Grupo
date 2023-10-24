@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
+import Home from '../components/home/Home';
+
 import Clientes from '../components/clientes/Clientes';
 import ViewCliente from '../components/clientes/ViewCliente';
 
@@ -23,7 +25,8 @@ function DashboardRoutes({role}) {
         <>
             <Navbar />
             <Routes>
-                <Route path="/" element={<PrivateRoutes component={BaseDashboard} routeKey={key}  />} />
+                <Route path="/" element={<PrivateRoutes component={Home} routeKey={key}  />} />
+                <Route path="/home" element={<PrivateRoutes component={Home} routeKey={key} />} />
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
                 <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role}/>} />
                 <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key}/>} />
