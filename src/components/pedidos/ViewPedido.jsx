@@ -115,7 +115,7 @@ function ViewPedido() {
   }
 
   return dados.map((data) => (
-    <div className={base.background}>
+    <div className={base.background} key={data.id}>
       <TitleBaseDashboard title={"Produtos"} />
 
       <div className={base.content}>
@@ -140,7 +140,7 @@ function ViewPedido() {
                   {attStatus.map((aux) => {
                     return (
                       <MenuItem
-                        key={`${aux.status}${aux.status + 1}`}
+                        key={aux}
                         value={aux.status}
                         disabled={aux.active_to_pass ? false : true}
                       >

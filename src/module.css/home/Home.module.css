@@ -1,0 +1,116 @@
+.grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.content_1::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content_1::-webkit-scrollbar-thumb {
+    background-color: rgb(182, 178, 178, 0.5);
+    border-radius: 6px;
+    width: 6px;
+}
+
+.content_1::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(182, 178, 178, 0.8);
+}
+
+.simpleData {
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+    background-color: RGB(28, 33, 44);
+    border-radius: 20px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.simpleData span>small {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+}
+
+.simpleData div  {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.content_2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 30px;
+    width: 100%;
+
+}
+
+.graphic {
+    width: 700px;
+    height: 500px;
+
+    padding: 20px;
+    border-radius: 20px;
+
+    background-color: RGB(28, 33, 44);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.graphic small{
+    font-size: 18px;
+    color: rgba(255, 255, 255);
+}
+
+@media (max-width: 1050px) {
+    .content_1 {
+        display: flex;
+        width: 100%;
+        max-height: 370px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 20px;
+    }
+
+    .simpleData {
+        width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    .simpleData {
+        width: 100%;
+    }
+
+    .graphic {
+        padding: 15px;
+        height: auto;
+    }
+}

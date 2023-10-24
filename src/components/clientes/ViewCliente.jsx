@@ -154,7 +154,7 @@ const ViewCliente = () => {
                     </div>
 
                     <div className={styles.div_link}>
-                      <Link className={styles.btnVi} to={`/dashboard/pedido/${x.id}/${x.status}`}>Visualizar Pedido</Link>
+                      <Link className={styles.btnVi} to={`/dashboard/pedido/${x.id}`}>Visualizar Pedido</Link>
                     </div>
                   </div>
                 ))

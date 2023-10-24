@@ -210,7 +210,7 @@ function FormProduto({
                 fullWidth
                 required
                 InputProps={{
-                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > kg  </small> </InputAdornment>,
+                    endAdornment: <InputAdornment position="start" > <small style={{ color: 'white' }} > g  </small> </InputAdornment>,
                 }}
                 sx={inputStyle}
                 onChange={handleInputChange}

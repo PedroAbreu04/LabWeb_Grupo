@@ -31,6 +31,17 @@ const CssTextField = styled(TextField)({
 
 function Teste() {
 
+    const data = { 
+      produtos : { 
+        quantCadastrados : 1, 
+        quantEsgotados: 1
+      },
+      clientes: { 
+        quantCadastrados : 1,
+        quantDesativados : 2
+      }
+    }
+
     // const dataTable = async () => {
     //     const apiUrl = `https://129.148.27.50/api/carrinho/add/item/17`;
     //     let body = {"product_id" : 29};

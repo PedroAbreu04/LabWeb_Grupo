@@ -1,8 +1,5 @@
 import React from 'react';
 
-import Button from '@mui/material/Button';
-
-
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import Carrousel from './Carrousel'
@@ -57,7 +54,7 @@ function Produto() {
 
         try {
             const jsonData = {
-                // name: formData.name,
+                name: formData.name,
                 desc: formData.desc,
                 brand: formData.brand,
                 price: parseFloat(formData.price),
@@ -66,7 +63,7 @@ function Produto() {
                 unity: formData.unity,
                 weight: parseFloat(formData.weight),
                 height: parseFloat(formData.height),
-                category_id: parseInt(formData.id_categoria),
+                category_id: parseInt(formData.category_.id),
                 images: [{ image: formData.img1 }, { image: formData.img2 }]
             };
 
@@ -90,31 +87,10 @@ function Produto() {
         await axios(apiUrl)
             .then(async (response) => {
                 if (response.status == 200) {
-                    // setSelectedCategory(response.data.id_categoria.id)
-                    // setIsLoading(false);
-                    // var apiData = response.data;
-                    // var updatedFormData = { ...formData };
-                    // var mergedFormData = { ...updatedFormData, ...apiData };
-                    // setFormData(mergedFormData);
-
                     let data = await response.data;
-
-                    formData.name = '';
-                    formData.desc = data.desc;
-                    formData.unity = data.unity;
-                    formData.weight = data.weight;
-                    formData.height = data.height;
-                    formData.width = data.width;
-                    formData.brand = data.brand;
-                    formData.price = data.price;
-                    formData.stock = data.stock;
-                    formData.id_categoria = data.category_.id;
-                    formData.images = data.images
-
+                    setFormData({...data });
                     setSelectedCategory(data.category_.id)
                     setIsLoading(false);
-
-                    console.log(formData)
                 }
             })
             .catch((error) => {
