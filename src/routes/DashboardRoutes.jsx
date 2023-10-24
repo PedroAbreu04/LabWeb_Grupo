@@ -35,7 +35,7 @@ function DashboardRoutes({role}) {
 
                 <Route path="/produto/:id" element={<PrivateRoutes component={Produto} routeKey={key} />} />
                 <Route path="/cliente/:id" element={<PrivateRoutes component={ViewCliente} routeKey={key} />} />
-                <Route path="/pedido/:id/:status" element={<PrivateRoutes component={ViewPedido} routeKey={key} />} />
+                <Route path="/pedido/:id" element={<PrivateRoutes component={ViewPedido} routeKey={key} />} />
             </Routes>
 
         </>
