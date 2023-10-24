@@ -48,6 +48,14 @@ function Home() {
 
     useEffect(() => {
         dataTable();
+        
+        if (window.innerWidth <= 767) {
+            setWGrapich(280)
+            setHGrapich(200)
+        } else {
+            setWGrapich(500)
+            setHGrapich(300)
+        }
     }, []);
 
     if (isLoading) {
