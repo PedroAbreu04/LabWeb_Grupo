@@ -18,8 +18,8 @@ function Home() {
 
     const [isLoading, setIsLoading] = useState(true);
     const [dataGrapich, setDataGrapich] = useState(true);
-    const [wGrapich, setWGrapich] = useState(500);
-    const [hGrapich, setHGrapich] = useState(300);
+    const [wGrapich, setWGrapich] = useState();
+    const [hGrapich, setHGrapich] = useState();
 
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 767) {

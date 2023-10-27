@@ -130,7 +130,7 @@ function Produto() {
                     <h1> Produto </h1>
 
                     <div className={styles.divSlider}>
-                        <Carrousel swiperKey={swiperKey} data={formData.images} />
+                        <Carrousel swiperKey={swiperKey} data={formData.images} condition={'produto'} />
                     </div>
 
                     <div className={styles.infoProducts}>

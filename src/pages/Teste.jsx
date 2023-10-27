@@ -1,72 +1,60 @@
-import { useEffect, useState } from "react";
-import axios from 'axios';
-import { TextField } from '@mui/material';
+import * as React from 'react';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { styled } from '@mui/material/styles';
 
-const CssTextField = styled(TextField)({
-    '& label': {
-      color: 'rgba(255, 255, 255, 0.7)',
+
+const CssDatePicker = styled(DatePicker)({
+  '& label': {
+    color: '#FFF',
+  },
+  '& label.Mui-focused': {
+    color: 'rgba(2, 175, 255, 0.8)',
+  },
+  '& .MuiInputBase-input': {
+    color: '#FFF',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'rgb(255, 255, 255, 0.5)',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'rgb(255, 255, 255, 0.5)',
     },
-    '& .MuiInputBase-input': {
-      color: 'rgba(128, 128, 128)',
+    '&:hover fieldset': {
+      borderColor: 'rgb(255, 255, 255, 0.5)',
     },
-    '& label.Mui-focused': {
-      color: 'rgba(2, 175, 255, 0.8)',
+    '&.Mui-focused fieldset': {
+      borderColor: 'rgba(2, 175, 255, 0.8)',
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'rgb(255, 255, 255, 0.5)',
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'rgba(255, 255, 255, 0.7)',
-      },
-      '&:hover fieldset': {
-        borderColor: 'rgb(255, 255, 255, 0.5)',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'rgba(2, 175, 255, 0.8)',
-      },
-    }
-  });
+  },
+  '& .MuiSvgIcon-root': {
+    color: 'white',
+  },
+});
 
-function Teste() {
-
-    const data = { 
-      produtos : { 
-        quantCadastrados : 1, 
-        quantEsgotados: 1
-      },
-      clientes: { 
-        quantCadastrados : 1,
-        quantDesativados : 2
-      }
-    }
-
-    // const dataTable = async () => {
-    //     const apiUrl = `https://129.148.27.50/api/carrinho/add/item/17`;
-    //     let body = {"product_id" : 29};
-
-    //     await axios.put(apiUrl, body)
-    //         .then(async (response) => {
-    //             let data = await response.data;
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // };
-
-    // useEffect(() => {
-    //     dataTable()
-    // }, []);
+export default function DatePickerViews() {
+  const handleDateChange = (date) => {
+    console.log(date.$y)
+    console.log(date.$M + 1)
+  };
 
 
-    return (
-        <div style={{ width:'100%', maxWidth:'500px'}}> <CssTextField
-        label="Nome"
-        name="name"
-        fullWidth
-      /> </div>
-    );
+  return (
+
+    <div style={{ width: '100%' }}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={['DatePicker']}>
+          <CssDatePicker
+            label={'mês e ano'}
+            views={['month', 'year']}
+            onChange={handleDateChange}
+            fullWidth
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+    </div>
+  );
 }
-
-export default Teste; 

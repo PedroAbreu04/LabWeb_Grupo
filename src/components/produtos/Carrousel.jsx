@@ -9,8 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
 
-function Carrousel({ swiperKey, data }) {
-
+function Carrousel({ swiperKey, data, condition }) { // Certifique-se de que 'condition' seja uma propriedade
     const containerStyle = {
         width: '100%',
         display: 'flex',
@@ -33,17 +32,30 @@ function Carrousel({ swiperKey, data }) {
             navigation
             modules={[Navigation, Pagination, Scrollbar, A11y]}
         >
-            {data.map((image) => (
-                <SwiperSlide key={image.id}>
-                    <div style={containerStyle}>
-                        <img
-                            alt="img"
-                            src={image.image_path}
-                            style={imgStyle}
-                        />
-                    </div>
-                </SwiperSlide>
-            ))}
+            {condition === 'produto' ? (
+                data.map((image) => (
+                    <SwiperSlide key={image.id}>
+                        <div style={containerStyle}>
+                            <img alt="img" src={image.image_path} style={imgStyle} />
+                        </div>
+                    </SwiperSlide>
+                ))
+            ) : (
+                
+                data.map((sale_item) => (
+                    <SwiperSlide key={sale_item.images[0].id}>
+                        <div style={containerStyle}>
+                            <img 
+                                alt="img" 
+                                src={
+                                    ( sale_item.images[0] ) ? sale_item.images[0].image_path : '/images/img_product.png'
+                                } 
+                                style={imgStyle} />
+                        </div>
+                    </SwiperSlide>
+                ))
+            )
+            }
         </Swiper>
     );
 }

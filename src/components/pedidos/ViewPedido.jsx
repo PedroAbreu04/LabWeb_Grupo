@@ -116,13 +116,15 @@ function ViewPedido() {
 
   return dados.map((data) => (
     <div className={base.background} key={data.id}>
-      <TitleBaseDashboard title={"Produtos"} />
+      <TitleBaseDashboard title={"Pedidos"} />
 
       <div className={base.content}>
         <div className={styles.container_1}>
           <div className={styles.div_info}>
-            <Carrousel data={data.sale_items} />
 
+            <div>
+              <Carrousel data={data.sale_items} condition={'pedido'}/>
+            </div>
             <div className={styles.border}>
               <h3>Atualizar Status:</h3>
               <FormControl fullWidth sx={{ marginBottom: "10px" }}>

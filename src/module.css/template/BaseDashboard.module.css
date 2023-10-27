@@ -131,8 +131,6 @@
         transform: rotate(360deg);
     }
 }
-
-
 @media (max-width: 767px) {
     .background {
         padding: 50px 10px;
