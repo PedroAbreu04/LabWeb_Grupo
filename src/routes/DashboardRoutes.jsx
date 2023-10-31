@@ -12,6 +12,10 @@ import Produtos from '../components/produtos/Produtos';
 import Pedidos from '../components/pedidos/Pedidos'
 import ViewPedido from '../components/pedidos/ViewPedido';
 
+import Analitycs from '../components/analitycs/Analitycs';
+
+import Tabelas from '../components/tabelas/Tabelas';
+
 import BaseDashboard from '../components/template/BaseDashboard';
 
 import Navbar from '../components/Navbar';
@@ -30,6 +34,8 @@ function DashboardRoutes({role}) {
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
                 <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role}/>} />
                 <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key}/>} />
+                <Route path="/analitycs" element={<PrivateRoutes component={Analitycs} routeKey={key}/>} />
+                <Route path="/tabelas" element={<PrivateRoutes component={Tabelas} routeKey={key}/>} />
 
                 {/* Url with Params  */}
 

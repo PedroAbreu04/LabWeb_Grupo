@@ -92,6 +92,7 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
+                        to="/dashboard/analitycs" 
                         className={`${styles.items} 
                         ${activeLink === 'link6' ? styles.active : ''}`} 
                         onClick={() => { handleLinkClick('link6'); closeNavbarMobile(); }}
@@ -110,6 +111,7 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
+                        to="/dashboard/tabelas" 
                         className={`${styles.items} 
                         ${activeLink === 'link8' ? styles.active : ''}`} 
                         onClick={() =>{ handleLinkClick('link8'); closeNavbarMobile(); }}
