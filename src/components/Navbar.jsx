@@ -92,9 +92,8 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
-                        to="/dashboard/analitycs" 
-                        className={`${styles.items} 
-                        ${activeLink === 'link6' ? styles.active : ''}`} 
+                        to="/dashboard/analitycs"
+                        className={`${styles.items} ${activeLink === 'link6' ? styles.active : ''}`} 
                         onClick={() => { handleLinkClick('link6'); closeNavbarMobile(); }}
                     >
                         <EqualizerIcon />
@@ -102,8 +101,7 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
-                        className={`${styles.items} 
-                        ${activeLink === 'link7' ? styles.active : ''}`} 
+                        className={`${styles.items} ${activeLink === 'link7' ? styles.active : ''}`} 
                         onClick={() => { handleLinkClick('link7'); closeNavbarMobile(); }}
                     >
                         <MapIcon />
@@ -111,9 +109,8 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink 
-                        to="/dashboard/tabelas" 
-                        className={`${styles.items} 
-                        ${activeLink === 'link8' ? styles.active : ''}`} 
+                        to="/dashboard/tabelas"
+                        className={`${styles.items} ${activeLink === 'link8' ? styles.active : ''}`} 
                         onClick={() =>{ handleLinkClick('link8'); closeNavbarMobile(); }}
                     >
                         <TableRowsIcon />
@@ -121,8 +118,8 @@ function Navbar() {
                     </NavLink>
 
                     <NavLink
-                        className={`${styles.items} 
-                        ${activeLink === 'link9' ? styles.active : ''}`} 
+                        to="/dashboard/config" 
+                        className={`${styles.items} ${activeLink === 'link9' ? styles.active : ''}`} 
                         onClick={() => { handleLinkClick('link9'); closeNavbarMobile(); }}
                     >
                         <Settings />

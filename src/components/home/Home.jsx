@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 import DonutGrapich from './DonutGrapich';
-import BarGrapich from './BarGrapich';
+import ColumnGrapich from './ColumnGrapich';
 
 import PersonIcon from '@mui/icons-material/Person';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -133,7 +133,7 @@ function Home() {
                     
                         <div className={styles.graphic} >
                             <small> Cadastrados esse mes </small>
-                            <BarGrapich
+                            <ColumnGrapich
                                 data={dataGrapich}
                                 wGrapich={wGrapich}
                                 hGrapich={hGrapich}

@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import Home from '../components/home/Home';
 
+import Config from '../components/config/Config'
+
 import Clientes from '../components/clientes/Clientes';
 import ViewCliente from '../components/clientes/ViewCliente';
 
@@ -12,9 +14,7 @@ import Produtos from '../components/produtos/Produtos';
 import Pedidos from '../components/pedidos/Pedidos'
 import ViewPedido from '../components/pedidos/ViewPedido';
 
-import Analitycs from '../components/analitycs/Analitycs';
-
-import Tabelas from '../components/tabelas/Tabelas';
+import Tabelas from '../components/tabelas/Tabelas'
 
 import BaseDashboard from '../components/template/BaseDashboard';
 
@@ -34,7 +34,7 @@ function DashboardRoutes({role}) {
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} />} />
                 <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role}/>} />
                 <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key}/>} />
-                <Route path="/analitycs" element={<PrivateRoutes component={Analitycs} routeKey={key}/>} />
+                <Route path="/config" element={<PrivateRoutes component={Config} routeKey={key}/>} />
                 <Route path="/tabelas" element={<PrivateRoutes component={Tabelas} routeKey={key}/>} />
 
                 {/* Url with Params  */}

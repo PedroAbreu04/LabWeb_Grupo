@@ -1,6 +1,6 @@
 import ApexChart from 'react-apexcharts'
 
-function BarGrapich({ data, wGrapich, hGrapich }) {
+function ColumnGrapich({ data, wGrapich, hGrapich }) {
 
     const series = [
         {
@@ -67,4 +67,4 @@ function BarGrapich({ data, wGrapich, hGrapich }) {
     )
 }
 
-export default BarGrapich;
+export default ColumnGrapich;

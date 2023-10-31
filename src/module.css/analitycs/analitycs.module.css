@@ -1,0 +1,72 @@
+.grapich{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 1000px;
+    min-width: 300px;
+
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.grapich h1::first-letter {
+    text-transform: uppercase;
+}
+
+.div_date{
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.input{
+    width: 100%;
+    max-width: 320px;
+}
+
+.divBtn{
+    width: 100%;
+    max-width: 150px;
+    padding-top: 8px;
+
+}
+
+.btn{
+    width: 100%;
+    padding: 5px;
+    background-color: rgb(255, 103, 1) ;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+    height: 40px;
+    font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+    .div_date{
+        flex-direction: column;
+    }
+}   
+
+
+@media (max-width: 767px) {
+    .grapich{
+        padding: 0px;
+    }
+}   
+
+@media (max-width: 380px) {
+    .divBtn{
+        max-width: 100%;
+    }
+}  
