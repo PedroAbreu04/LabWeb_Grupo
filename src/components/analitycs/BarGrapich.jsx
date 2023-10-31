@@ -44,11 +44,11 @@ function BarGrapich({ wGrapich, dataGrapich }) {
                 goals: [
                     {
                         name: 'Expectativa',
-                        value: 20,
-                        strokeWidth: data.value > 20 ? 10 : 3,
-                        strokeHeight: data.value > 20 ? 0 : 10,
+                        value: 3,
+                        strokeWidth: data.value > 3 ? 10 : 3,
+                        strokeHeight: data.value > 3 ? 0 : 10,
                         strokeColor: '#FFF',
-                        strokeLineCap: data.value > 20 ? 'round' : ''
+                        strokeLineCap: data.value > 3 ? 'round' : ''
                     }
                 ]
             }))

@@ -16,6 +16,8 @@ import ViewPedido from '../components/pedidos/ViewPedido';
 
 import Tabelas from '../components/tabelas/Tabelas'
 
+import Analitycs from '../components/analitycs/Analitycs'
+
 import BaseDashboard from '../components/template/BaseDashboard';
 
 import Navbar from '../components/Navbar';
@@ -36,6 +38,7 @@ function DashboardRoutes({role}) {
                 <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key}/>} />
                 <Route path="/config" element={<PrivateRoutes component={Config} routeKey={key}/>} />
                 <Route path="/tabelas" element={<PrivateRoutes component={Tabelas} routeKey={key}/>} />
+                <Route path="/analitycs" element={<PrivateRoutes component={Analitycs} routeKey={key}/>} />
 
                 {/* Url with Params  */}
 

@@ -65,7 +65,7 @@ function Analitycs() {
 
     function handleResize() {
         if (divGrapich.current) {
-            const width = divGrapich.current.offsetWidth - 100;
+            const width = divGrapich.current.offsetWidth - 75;
             setWGrapich(width);
         }
     }
@@ -98,7 +98,7 @@ function Analitycs() {
 
     useEffect(() => {
         if (divGrapich.current) {
-            const width = divGrapich.current.offsetWidth - 100;
+            const width = divGrapich.current.offsetWidth - 75;
             setWGrapich(width);
         }
 
