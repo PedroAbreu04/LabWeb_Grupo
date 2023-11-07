@@ -8,10 +8,10 @@ import axios from 'axios';
 import base from "../../module.css/template/BaseDashboard.module.css";
 import styles from "../../module.css/produtos/Produto.module.css";
 import FormProduto from './FormProduto';
+import NoPerm from '../NoPerm';
 
 
-
-function Produto() {
+function Produto({ role }) {
     const [swiperKey, setSwiperKey] = useState(0); // Inicialize a chave como um estado
 
     const { id } = useParams();
@@ -20,6 +20,11 @@ function Produto() {
     const [categorys, setCategorys] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedFiles, setSelectedFiles] = useState([]);
+
+    const [isNoPermVisible, setIsNoPermVisible] = useState(false);
+    const onCloseModal = () => {
+        setIsNoPermVisible(false);
+    };
 
     const handleClose = () => { console.log('fechei') };
 
@@ -45,11 +50,17 @@ function Produto() {
         width: '',
         weight: '',
         id_categoria: {},
-        images: [],
     });
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
+
+        if (role != "ADMIN") {
+            setIsNoPermVisible(true)
+            return
+        }
+
         setIsLoading(true);
 
         try {
@@ -64,7 +75,6 @@ function Produto() {
                 weight: parseFloat(formData.weight),
                 height: parseFloat(formData.height),
                 category_id: parseInt(formData.category_.id),
-                images: [{ image: formData.img1 }, { image: formData.img2 }]
             };
 
             const response = await axios.put(`https://api-fatec.onrender.com/api/v1/product/${id}`, jsonData);
@@ -88,7 +98,7 @@ function Produto() {
             .then(async (response) => {
                 if (response.status == 200) {
                     let data = await response.data;
-                    setFormData({...data });
+                    setFormData({ ...data });
                     setSelectedCategory(data.category_.id)
                     setIsLoading(false);
                 }
@@ -155,6 +165,7 @@ function Produto() {
                     </div>
                 </div>
             </div>
+            {isNoPermVisible && <NoPerm onClose={onCloseModal} />}
         </div>
     );
 }

@@ -1,126 +1,294 @@
-body {
-    margin: 0;
+/* .flip {
+  animation: flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+} */
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.main_login {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.right_login{
-    width: 75vw;
-    height: 100vh;
-    background:#0D1117;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
-.img_login{
-    width: 35vw ;
+.login form img {
+  width: 80%;
+  margin-bottom: 20px;
 }
 
-.img_logo{
-    width: 10vw ;
+
+.textefield {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
 }
 
-.logo{
-    display: flex;
-    justify-content: flex-start;
+.textefield>input {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 15px;
+  background: transparent;
+  font-size: 12px;
+  box-sizing: border-box;
+
+  color: #fff;
 }
 
-.login{
-    width: 25vw;
-    height: 100vh;
-    background:#161B22;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.textefield>input:focus {
+  border: 1px solid rgba(2, 175, 255, 0.8);
 }
 
-.login > h1{
-    color:#FFFFFF;
-    font-weight: 300;
+.textefield>input::placeholder {
+  color: #fff;
 }
 
-.textefield{
-    width: 100%;
-    margin: 20px 0px;
-    display: flex;
-    justify-content: center;
+.btn_login {
+  width: 100%;
+  padding: 10px 0px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background: #ff7417;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-.textefield > input{
-    width: 60%;
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    background:#D9D9D9;
-    font-size: 12px;
-    box-sizing: border-box;
-}   
+.messageError {
+  width: 100%;
 
-.textefield >input::placeholder {
-    color:#000000;
+  text-align: end;
+  color: #eb0119;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.btn_login{
-    width: 30%;
-    padding: 10px 0px;
-    border: none;
-    border-radius:  5px;
-    background:#FF7417;
-    font-weight: 600;
-    color:#FFFFFF;
-    cursor: pointer;
+.resetPassword {
+  width: 100%;
+  color: white;
+  text-align: end;
 }
 
-#messageError{
-    margin: 12px;
-    color: #eb0119;
+.resetPassword a {
+  text-decoration: none;
+  color: white;
 }
 
-@media (max-width: 480px) {
-    
-    .main_login{
-        display: block; 
-    }
-
-    .login{
-        width: 100vw;
-    }
-    
-    .textefield > input{
-        width: 80%;
-    }
-    
-    .right_login {
-        display: none;
-    }
-
-    .img_logo{
-        width: 35vw;
-    }
+.wrongAnimate {
+  animation: heartbeat 1s ease-in-out 1 both;
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-    .login {
-        width: 60vw
-    }
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
 
-    .right_login{
-        width: 40vw;
-    }
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
 
-    .textefield > input{
-        width: 80%;
-    }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
 
-    .img_logo{
-        width: 18vw;
-    }
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes flip-out-hor-top {
+  0% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotateX(70deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .login {
+    padding: 20px;
+  }
+}
+
+/* Animation Backgrou CSS */
+
+.circles {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  bottom: -150px;
+  background: transparent url("../../public/images/backgroud_login.png") center/contain no-repeat;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+  background: transparent url("https://png.pngtree.com/png-vector/20230324/ourmid/pngtree-cartoon-starfish-or-sea-star-vector-png-image_6667318.png") center/contain no-repeat;
+  animation: animateWithRotate 25s linear infinite;
+}
+
+.circles li:nth-child(2) {
+  right: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+  animation: animateToRight 25s linear infinite;
+}
+
+.circles li:nth-child(3) {
+  right: 70%;
+  width: 20px;
+  height: 20px;
+  animation: animateToRight 25s linear infinite;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+  animation: animateWithRotate 25s linear infinite;
+  background: transparent url("https://png.pngtree.com/png-vector/20230324/ourmid/pngtree-cartoon-starfish-or-sea-star-vector-png-image_6667318.png") center/contain no-repeat;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+  animation: animateWithRotate 25s linear infinite;
+  background: transparent url("https://png.pngtree.com/png-vector/20230324/ourmid/pngtree-cartoon-starfish-or-sea-star-vector-png-image_6667318.png") center/contain no-repeat;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation: animateToLeft 25s linear infinite;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  background: transparent url("https://png.pngtree.com/png-vector/20230324/ourmid/pngtree-cartoon-starfish-or-sea-star-vector-png-image_6667318.png") center/contain no-repeat;
+  height: 150px;
+  animation: animateWithRotate 25s linear infinite;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation: animateToLeft 25s linear infinite;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  background: transparent url("https://png.pngtree.com/png-vector/20230324/ourmid/pngtree-cartoon-starfish-or-sea-star-vector-png-image_6667318.png") center/contain no-repeat;
+  animation: animateWithRotate 25s linear infinite;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  right: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation: animateToRight 25s linear infinite;
+  animation-duration: 20s;
+}
+
+@keyframes animateWithRotate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes animateToRight {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-1000px) translateX(1000px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes animateToLeft {
+  0% {
+    transform: translateY(0) rotate(320deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-1000px) translateX(-1000px) rotate(320deg);
+    opacity: 0;
+  }
 }

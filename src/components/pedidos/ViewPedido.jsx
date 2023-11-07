@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import base from "../../module.css/template/BaseDashboard.module.css";
 import TitleBaseDashboard from "../template/HeaderDashboard";
+import NoPerm from "../NoPerm";
 
 import {
   TextField,
@@ -55,7 +56,7 @@ const CssSelect = styled(Select)({
   },
 });
 
-function ViewPedido() {
+function ViewPedido({ role }) {
   const { id } = useParams();
 
   const [dados, setdados] = useState([]);
@@ -64,6 +65,11 @@ function ViewPedido() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [status, setStatus] = useState();
+
+  const [isNoPermVisible, setIsNoPermVisible] = useState(false);
+  const onCloseModal = () => {
+    setIsNoPermVisible(false);
+  };
 
   const getPosts = async () => {
     try {
@@ -95,6 +101,12 @@ function ViewPedido() {
   }, []);
 
   const handleSelectChange = async (e) => {
+
+    if (role != "ADMIN") {
+      setIsNoPermVisible(true);
+      return
+    }
+
     const { value } = e.target;
     setStatus(value);
 
@@ -108,6 +120,7 @@ function ViewPedido() {
     } catch (e) {
       console.log(e);
     }
+
   };
 
   if (isLoading) {
@@ -123,7 +136,7 @@ function ViewPedido() {
           <div className={styles.div_info}>
 
             <div>
-              <Carrousel data={data.sale_items} condition={'pedido'}/>
+              <Carrousel data={data.sale_items} condition={'pedido'} />
             </div>
             <div className={styles.border}>
               <h3>Atualizar Status:</h3>
@@ -142,7 +155,7 @@ function ViewPedido() {
                   {attStatus.map((aux) => {
                     return (
                       <MenuItem
-                        key={aux}
+                        key={aux.status}
                         value={aux.status}
                         disabled={aux.active_to_pass ? false : true}
                       >
@@ -200,6 +213,8 @@ function ViewPedido() {
           </div>
         </div>
       </div>
+
+      {isNoPermVisible && <NoPerm onClose={onCloseModal} />}
     </div>
   ));
 }

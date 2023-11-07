@@ -1,76 +1,129 @@
-import styles from '../module.css/Login.module.css'
+import styles from "../module.css/Login.module.css";
+import { TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { useState, useRef } from "react";
+import axios from "axios";
+
+const CssTextField = styled(TextField)({
+  "& label": {
+    color: "#FFF",
+  },
+  "& label.Mui-focused": {
+    color: "rgba(2, 175, 255, 0.8)",
+  },
+  "& .MuiInputBase-input": {
+    color: "#FFF",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "rgb(255, 255, 255, 0.5)",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "rgb(255, 255, 255, 0.5)",
+    },
+    "&:hover fieldset": {
+      borderColor: "rgb(255, 255, 255, 0.5)",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "rgba(2, 175, 255, 0.8)",
+    },
+  },
+  "&::-webkit-autofill":{
+    backgroundColor: "transparent !important"
+  },
+  "&::-webkit-autofill:focus":{
+    backgroundColor: "transparent !important"
+  }
+  
+});
 
 function Login() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const wrongLogin = useRef();
+  const content = useRef();
 
-  function login() {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  function login(e) {
+    e.preventDefault();
+
     const url = "https://api-login-cdv6.onrender.com/api/v1/auth/login";
 
-    let email = document.getElementById("email");
-    let senha = document.getElementById("senha");
-    let messageError = document.getElementById("messageError");
-
-    if (email.value === "" || senha.value === "") {
-      messageError.innerHTML = "Campos email e/ou senha estão vazios!";
-    } else {
-      let dados = {
-        email: email.value,
-        password: senha.value,
-      };
-
-      let dadosJSON = JSON.stringify(dados);
-
-      let requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: dadosJSON,
-      };
-
-      const url = 'https://api-login-cdv6.onrender.com/api/v1/auth/login';
-
-      fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.statusCode === 401) {
-          messageError.innerHTML = data.message;
-        } else {
-          localStorage.setItem("token", data.token);
-          window.location.href = '/dashboard';
-        }
+    axios
+      .post(url, formData)
+      .then( async (response) => {
+        let data = response.data
+        localStorage.setItem("token", data.token);
+        content.current.className = `${styles.content} ${styles.flip}`;
+        window.location.href = "/dashboard";
+      })
+      .catch((error) => {
+        wrongLogin.current.innerHTML = error.response.data.message;
       });
-    }
   }
 
-
   return (
-    <div className={styles.main_login}>
+    <>
+      <ul className={styles.circles}>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
 
-     <div className={styles.login}>
-      <div className={styles.logo}>
-        <img src="/images/logo.png" alt=""  className={styles.img_logo} />
-      </div>
-        <h1>Login</h1>
+      <div className={styles.content} ref={content}>
+        <div className={styles.login}>
+          <form onSubmit={login}>
 
-        <div className={styles.textefield}>
-          <input type="text" id="email" name="email" placeholder="Email" />
+            <img src="/images/logo-letter.png" />
+            
+            <CssTextField
+              label="Email"
+              name="email"
+              fullWidth
+              onChange={handleInputChange}
+              value={formData.email}
+              required
+            />
+
+            <CssTextField
+              label="Senha"
+              name="password"
+              type="password"
+              fullWidth
+              onChange={handleInputChange}
+              value={formData.password}
+              required
+            />
+
+            <span
+              id="messageError"
+              className={styles.messageError}
+              ref={wrongLogin}
+            ></span>
+
+            <button type="submit" className={styles.btn_login}>
+              Entrar
+            </button>
+
+            <div className={styles.resetPassword}>
+              <a href="#"> Esqueceu sua senha? </a> 
+            </div>
+          </form>
         </div>
-
-        <div className={styles.textefield}>
-          <input type="password" id="senha" name="senha" placeholder="Senha" />
-        </div>
-
-        <span id="messageError" className={styles.messageError}></span>
-
-        <button onClick={login} className={styles.btn_login}>Entrar</button>
-      
       </div>
-
-      <div className={styles.right_login}>
-        <img src="/images/img_login.svg" alt="" className={styles.img_login}/>
-      </div>
-    
-    </div>
+    </>
   );
 }
 

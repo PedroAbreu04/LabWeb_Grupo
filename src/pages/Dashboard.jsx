@@ -1,9 +1,9 @@
 import DashboardRoutes from "../routes/DashboardRoutes"
 
-function Dashboard({role}) {
+function Dashboard({role, userImagePath}) {
   return (
    <>
-    <DashboardRoutes role={role}/>
+    <DashboardRoutes role={role} userImagePath={userImagePath}/>
    </>
   );
 }
