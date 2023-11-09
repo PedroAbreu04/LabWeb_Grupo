@@ -62,6 +62,21 @@ h2 {
 
 }
 
+.btnImg{
+    background: #FF6701;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btnImg:hover{
+    background: #a85924;
+}
+
 @media (max-width: 768px) {
     .imput {
         width: 80%;

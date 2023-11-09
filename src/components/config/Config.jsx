@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 import styles from "../../module.css/config/Config.module.css";
@@ -83,6 +83,20 @@ const buttonRemoveStyle = {
 function Config() {
   const [dados, setdados] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const imgElement = useRef();
+
+  const randomImg = () => {
+    const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let randomString = '';
+  
+    for (let i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomString += characters.charAt(randomIndex);
+    }
+  
+    formData.imgPath = `https://api.dicebear.com/7.x/micah/svg?seed=${randomString}`
+    imgElement.current.src = formData.imgPath;
+  }
 
   const [formData, setFormData] = useState({
     name: "",
@@ -147,9 +161,10 @@ function Config() {
               <h1>Seu Perfil</h1>
               <div className={styles.div_img}>
                 <img
+                  ref={imgElement}
                   src={formData.imgPath}
-                  alt=""
                 />
+                <button className={styles.btnImg} onClick={randomImg}>Trocar Foto</button>
               </div>
             </div>
             <div className={styles.baixo}>
