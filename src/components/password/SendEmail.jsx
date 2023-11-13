@@ -1,4 +1,4 @@
-import styles from "../module.css/Login.module.css";
+import styles from "../../module.css/Login.module.css";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useState, useRef } from "react";
@@ -37,60 +37,35 @@ const CssTextField = styled(TextField)({
   
 });
 
-function ResetPassword() {
-  const [formData, setFormData] = useState({ password: "" ,confirmPassword: "" });
+function ForgotPassword() {
+  const [formData, setFormData] = useState({ email: ""});
   const wrongLogin = useRef();
   const rightLogin = useRef();
-
+  
   const content = useRef();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...forgot, [name]: value });
   };
 
-  const urlRoute = window.location.href;
-  const token = urlRoute.split("password/reset/")[1];
-    
-  let headers = {
-    Authorization: `Bearer ${token}`, 
-  }
-  
-  const urlEmail = "https://api-login-cdv6.onrender.com/api/v1/auth/tokenEmail";
-    
-  axios
-  .get(urlEmail, {headers} )
-  .then( async (response) => {
-    if(response.data.validateToken === false){
-      window.location.href = '/notFound'
-    }
-  });
-
-  function reset(e) {
+  function forgot(e) {
     e.preventDefault();
-    
-    const url = "https://api-login-cdv6.onrender.com/api/v1/user/changePassword";
-    
-    wrongLogin.current.style.display = 'none';
-    rightLogin.current.style.display = 'none';
 
-    if(formData.password !== formData.confirmPassword){
-      wrongLogin.current.style.display = 'block';
-      wrongLogin.current.innerHTML = 'As senhas são diferentes!';
-    }else{
-      axios
-      .post(url, formData, {headers} )
+    const url = "https://api-login-cdv6.onrender.com/api/v1/user/enviar-email";
+
+    rightLogin.current.style.display = 'none';
+    wrongLogin.current.style.display = 'none';
+    axios
+      .post(url, formData)
       .then( async (response) => {
         rightLogin.current.style.display = 'block';
-        rightLogin.current.innerHTML = '*Senha alterada com sucesso';
-        setTimeout(function(){window.location.href = '/'}, 2000)
+        rightLogin.current.innerHTML = '*Foi enviado um email';
       })
       .catch((error) => {
         wrongLogin.current.style.display = 'block';
-        wrongLogin.current.innerHTML = 'Não foi possível alterar senha';
+        wrongLogin.current.innerHTML = 'Não há nenhum usuário com este e-mail';
       });
-    }
-   
   }
 
   return (
@@ -111,29 +86,17 @@ function ResetPassword() {
       </ul>
        <div className={styles.content}>
         <div className={styles.login}>
-          <form onSubmit={reset}>
+          <form onSubmit={forgot}>
 
             {/* <img src="/images/logo-letter.png" /> */}
             
-            <h1>MUDAR SENHA</h1>
-
+            <h1>RECUPERAR SENHA</h1>
             <CssTextField
-              label="Senha"
-              name="password"
-              type="password"
+              label="Email"
+              name="email"
               fullWidth
               onChange={handleInputChange}
-              value={formData.password}
-              required
-            />
-
-            <CssTextField
-              label="Confirme a senha"
-              name="confirmPassword"
-              fullWidth
-              onChange={handleInputChange}
-              value={formData.confirmPassword}
-              type="password"
+              value={forgot.email}
               required
             />
 
@@ -154,6 +117,9 @@ function ResetPassword() {
               Enviar
             </button>
             
+            <div className={styles.resetPassword}>
+              <a href="/"> Lembrou da senha? </a> 
+            </div>
           </form>
         </div>
       </div>
@@ -161,4 +127,4 @@ function ResetPassword() {
   )
 }
 
-export default ResetPassword;
+export default ForgotPassword;
