@@ -37,9 +37,11 @@ const CssTextField = styled(TextField)({
   
 });
 
-function Login() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+function ResetPassword() {
+  const [formData, setFormData] = useState({ password: "" ,confirmPassword: "" });
   const wrongLogin = useRef();
+  const rightLogin = useRef();
+
   const content = useRef();
 
   const handleInputChange = (e) => {
@@ -47,27 +49,53 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
-  function login(e) {
+  const urlRoute = window.location.href;
+  const token = urlRoute.split("password/reset/")[1];
+    
+  let headers = {
+    Authorization: `Bearer ${token}`, 
+  }
+  
+  const urlEmail = "https://api-login-cdv6.onrender.com/api/v1/auth/tokenEmail";
+    
+  axios
+  .get(urlEmail, {headers} )
+  .then( async (response) => {
+    if(response.data.validateToken === false){
+      window.location.href = '/notFound'
+    }
+  });
+
+  function reset(e) {
     e.preventDefault();
+    
+    const url = "https://api-login-cdv6.onrender.com/api/v1/user/changePassword";
+    
+    wrongLogin.current.style.display = 'none';
+    rightLogin.current.style.display = 'none';
 
-    const url = "https://api-login-cdv6.onrender.com/api/v1/auth/login";
-
-    axios
-      .post(url, formData)
+    if(formData.password !== formData.confirmPassword){
+      wrongLogin.current.style.display = 'block';
+      wrongLogin.current.innerHTML = 'As senhas são diferentes!';
+    }else{
+      axios
+      .post(url, formData, {headers} )
       .then( async (response) => {
-        let data = response.data
-        localStorage.setItem("token", data.token);
-        content.current.className = `${styles.content} ${styles.flip}`;
-        window.location.href = "/dashboard";
+        rightLogin.current.style.display = 'block';
+        rightLogin.current.innerHTML = '*Senha alterada com sucesso';
+        setTimeout(function(){window.location.href = '/'}, 2000)
       })
       .catch((error) => {
-        wrongLogin.current.innerHTML = error.response.data.message;
+        wrongLogin.current.style.display = 'block';
+        wrongLogin.current.innerHTML = 'Não foi possível alterar senha';
       });
+    }
+   
   }
 
   return (
     <>
-      <ul className={styles.circles}>
+     <ul className={styles.circles}>
         <li></li>
         <li></li>
         <li></li>
@@ -81,21 +109,13 @@ function Login() {
         <li></li>
         <li></li>
       </ul>
-
-      <div className={styles.content} ref={content}>
+       <div className={styles.content}>
         <div className={styles.login}>
-          <form onSubmit={login}>
+          <form onSubmit={reset}>
 
-            <img src="/images/logo-letter.png" />
+            {/* <img src="/images/logo-letter.png" /> */}
             
-            <CssTextField
-              label="Email"
-              name="email"
-              fullWidth
-              onChange={handleInputChange}
-              value={formData.email}
-              required
-            />
+            <h1>MUDAR SENHA</h1>
 
             <CssTextField
               label="Senha"
@@ -107,24 +127,38 @@ function Login() {
               required
             />
 
+            <CssTextField
+              label="Confirme a senha"
+              name="confirmPassword"
+              fullWidth
+              onChange={handleInputChange}
+              value={formData.confirmPassword}
+              type="password"
+              required
+            />
+
             <span
               id="messageError"
               className={styles.messageError}
               ref={wrongLogin}
             ></span>
 
-            <button type="submit" className={styles.btn_login}>
-              Entrar
-            </button>
+            <span
+              id="messageSuccess"
+              className={styles.messageSuccess}
+              ref={rightLogin}
+            ></span>
 
-            <div className={styles.resetPassword}>
-              <a href="/password/forgot"> Esqueceu sua senha? </a> 
-            </div>
+
+            <button type="submit" className={styles.btn_login}>
+              Enviar
+            </button>
+            
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default ResetPassword;

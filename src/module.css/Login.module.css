@@ -76,13 +76,21 @@
 
 .messageError {
   width: 100%;
-
+  display: none;
   text-align: end;
   color: #eb0119;
   font-size: 14px;
   font-weight: bold;
 }
 
+.messageSuccess{
+  width: 100%;
+  display: none;
+  text-align: end;
+  color: #34eb01;
+  font-size: 14px;
+  font-weight: bold;
+}
 .resetPassword {
   width: 100%;
   color: white;

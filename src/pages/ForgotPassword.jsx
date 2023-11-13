@@ -37,37 +37,40 @@ const CssTextField = styled(TextField)({
   
 });
 
-function Login() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+function ForgotPassword() {
+  const [formData, setFormData] = useState({ email: ""});
   const wrongLogin = useRef();
+  const rightLogin = useRef();
+  
   const content = useRef();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...forgot, [name]: value });
   };
 
-  function login(e) {
+  function forgot(e) {
     e.preventDefault();
 
-    const url = "https://api-login-cdv6.onrender.com/api/v1/auth/login";
+    const url = "https://api-login-cdv6.onrender.com/api/v1/user/enviar-email";
 
+    rightLogin.current.style.display = 'none';
+    wrongLogin.current.style.display = 'none';
     axios
       .post(url, formData)
       .then( async (response) => {
-        let data = response.data
-        localStorage.setItem("token", data.token);
-        content.current.className = `${styles.content} ${styles.flip}`;
-        window.location.href = "/dashboard";
+        rightLogin.current.style.display = 'block';
+        rightLogin.current.innerHTML = '*Foi enviado um email';
       })
       .catch((error) => {
-        wrongLogin.current.innerHTML = error.response.data.message;
+        wrongLogin.current.style.display = 'block';
+        wrongLogin.current.innerHTML = 'Não há nenhum usuário com este e-mail';
       });
   }
 
   return (
     <>
-      <ul className={styles.circles}>
+     <ul className={styles.circles}>
         <li></li>
         <li></li>
         <li></li>
@@ -81,29 +84,19 @@ function Login() {
         <li></li>
         <li></li>
       </ul>
-
-      <div className={styles.content} ref={content}>
+       <div className={styles.content}>
         <div className={styles.login}>
-          <form onSubmit={login}>
+          <form onSubmit={forgot}>
 
-            <img src="/images/logo-letter.png" />
+            {/* <img src="/images/logo-letter.png" /> */}
             
+            <h1>RECUPERAR SENHA</h1>
             <CssTextField
               label="Email"
               name="email"
               fullWidth
               onChange={handleInputChange}
-              value={formData.email}
-              required
-            />
-
-            <CssTextField
-              label="Senha"
-              name="password"
-              type="password"
-              fullWidth
-              onChange={handleInputChange}
-              value={formData.password}
+              value={forgot.email}
               required
             />
 
@@ -113,18 +106,25 @@ function Login() {
               ref={wrongLogin}
             ></span>
 
-            <button type="submit" className={styles.btn_login}>
-              Entrar
-            </button>
+            <span
+              id="messageSuccess"
+              className={styles.messageSuccess}
+              ref={rightLogin}
+            ></span>
 
+
+            <button type="submit" className={styles.btn_login}>
+              Enviar
+            </button>
+            
             <div className={styles.resetPassword}>
-              <a href="/password/forgot"> Esqueceu sua senha? </a> 
+              <a href="/"> Lembrou da senha? </a> 
             </div>
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default ForgotPassword;
