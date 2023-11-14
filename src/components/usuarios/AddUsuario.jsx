@@ -46,6 +46,39 @@ const style = {
     },
 };
 
+const style2 = {
+    position: "absolute",
+    display: "flex",
+    justifyContent: "center",
+    alingItens: "center",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: "rgb(22, 27, 34)",
+    width: 450,
+    height: 'auto',
+    boxShadow: 24,
+    borderRadius: "15px",
+    p: 4,
+    color: "white",
+    fontFamily: "Hanuman",
+    overflowY: "auto",
+    "&::-webkit-scrollbar": {
+      width: "8px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgb(182, 178, 178, 0.5)",
+      borderRadius: "6px",
+      width: "6px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: "rgb(182, 178, 178, 0.8)",
+    },
+    "@media (max-width: 767px)": {
+      width: "90%",
+    },
+  };
+
 const styleNot = {
     position: "absolute",
     top: "50%",
@@ -82,9 +115,16 @@ export default function AddCliente({ title, refreshUsuarios, role }) {
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isNoPermVisible, setIsNoPermVisible] = useState(false);
+    const [randomPassword, setRandomPassword] = useState('senha aleatorica');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    // Ignora isso aqui
+
+    const [open2, setOpen2] = useState(false);
+    const handleOpen2 = () => setOpen2(true);
+    const handleClose2 = () => setOpen2(false);
 
     //  Form Data
     const [formData, setFormData] = useState({
@@ -103,6 +143,22 @@ export default function AddCliente({ title, refreshUsuarios, role }) {
         setFormData({ ...formData, [name]: value });
     };
 
+    // Random Password
+
+    function random() {
+        var carac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var password = "";
+
+        for (var i = 0; i < 8; i++) {
+            var index = Math.floor(Math.random() * carac.length);
+            password += carac.charAt(index);
+        }
+
+        setRandomPassword(password)
+
+        return password;
+    }
+
     // Funciton Add Product
 
     const handleSubmit = async (e) => {
@@ -116,7 +172,7 @@ export default function AddCliente({ title, refreshUsuarios, role }) {
             email: formData.email,
             role: formData.role,
             active: true,
-            password: '123',
+            password: random(),
             imgPath: "https://img.free.com/imgProfile"
         };
 
@@ -127,10 +183,13 @@ export default function AddCliente({ title, refreshUsuarios, role }) {
         await axios.post("https://api-login-cdv6.onrender.com/api/v1/user", jsonData, { headers })
             .then(async (response) => {
                 let data = await response.data;
+
                 setTimeout(function () {
+                    handleOpen2();
+                    handleClose();
+
                     refreshUsuarios();
                     setIsLoading(false);
-                    handleClose();
                 }, 3000);
             })
             .catch((error) => {
@@ -191,6 +250,61 @@ export default function AddCliente({ title, refreshUsuarios, role }) {
 
             {isNoPermVisible && <NoPerm onClose={onCloseModal} />}
 
+            <Modal
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style2}>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: "center",
+                        alingItens: 'center',
+                        flexDirection: 'column',
+                        gap: '10px',
+                        width:'100%'
+                    }}>
+
+                        <p style={{ textAlign: "center" }}>
+                            Senha aleatoria gerada. <br/>Clique para copiar 
+                        </p>
+
+                        <button onClick={
+                            () => {
+                                navigator.clipboard.writeText(randomPassword)
+                                  .then(function() {
+                                    console.log("copiado com sucesso");
+                                  })
+                                  .catch(function(err) {
+                                    console.error('Erro ao copiar: ', err);
+                                  });
+                            }}
+                            style={{
+                                padding:'10px',
+                                width: '100%',
+                                color: 'black',
+                                borderRadius: '25px',
+                                border: 'none',
+                                cursor: 'pointer'
+                            }}
+                            > Copiar </button>
+
+                            <button onClick={handleClose2}
+                            style={{
+                                padding:'10px',
+                                width: '100%',
+                                color: 'black',
+                                borderRadius: '25px',
+                                border: 'none',
+                                cursor: 'pointer',
+                                backgroundColor:'rgb(229, 36, 36)',
+                                color: 'white'
+                            }}
+                            > Fechar </button>
+                    </div>
+                </Box>
+            </Modal>
         </>
     );
 }
