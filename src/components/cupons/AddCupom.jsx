@@ -15,7 +15,6 @@ import styles from "../../module.css/produtos/AddProduto.module.css";
 import base from "../../module.css/template/BaseDashboard.module.css";
 import FormCupom from "./FormCupom";
 import NoPerm from "../NoPerm";
-import { format, parse  } from 'date-fns';
 
 const style = {
     position: "absolute",
