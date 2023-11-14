@@ -20,6 +20,7 @@ import Analitycs from '../components/analitycs/Analitycs'
 
 import Usuarios from '../components/usuarios/Usuarios'
 import ViewUsuario from '../components/usuarios/ViewUsuario'
+import Cupom from '../components/cupons/Cupons'
 
 import BaseDashboard from '../components/template/BaseDashboard';
 
@@ -39,6 +40,7 @@ function DashboardRoutes({ role, userImagePath }) {
                 <Route path="/clientes" element={<PrivateRoutes component={Clientes} routeKey={key} role={role} />} />
                 <Route path="/produtos" element={<PrivateRoutes component={Produtos} routeKey={key} role={role} />} />
                 <Route path="/pedidos" element={<PrivateRoutes component={Pedidos} routeKey={key} role={role} />} />
+                <Route path="/cupons" element={<PrivateRoutes component={Cupom} routeKey={key} role={role} />} />
                 <Route path="/config" element={<PrivateRoutes component={Config} routeKey={key} role={role} />} />
                 <Route path="/tabelas" element={<PrivateRoutes component={Tabelas} routeKey={key} role={role} />} />
                 <Route path="/analitycs" element={<PrivateRoutes component={Analitycs} routeKey={key} role={role} />} />

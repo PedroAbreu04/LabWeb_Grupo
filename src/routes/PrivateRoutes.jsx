@@ -33,7 +33,7 @@ function PrivateRoutes({ component: Component, routeKey }) {
 
    
   if (!isLoading) {
-    if(dataUser.newUser = true){
+    if(dataUser.newUser == true){
       return(<NewPassword />)
    }
     return (isAuth) ? <Component role={dataUser.role} userImagePath={dataUser.imgPath}/> : <NotAuthenticated />

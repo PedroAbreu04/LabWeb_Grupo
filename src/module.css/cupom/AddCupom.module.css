@@ -1,0 +1,153 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.loading {
+    border: 8px solid #f3f3f3; /* Cor do círculo */
+    border-top: 8px solid #3498db; /* Cor da borda superior */
+    border-radius: 50%; /* Cria um círculo */
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite; /* Animação de rotação */
+    margin: 50px auto; /* Centraliza o spinner */
+}
+
+.btnSubmit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 10%;
+    margin-top: 50px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading form{
+    display: none;
+}
+
+.div_file {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.btn_file{
+    border: 1px dashed rgb(255, 255, 255, 0.5);
+    color:  white;
+    cursor: pointer;
+    transition: all 0.5s;
+    padding: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn_file:hover{
+    border-color: rgba(2, 175, 255, 0.8);
+    color: rgba(2, 175, 255, 0.8);
+}
+
+.btn_file small{
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.filesUpload{
+    width: 100%;
+    min-height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.file{
+    width: 100%;
+    height: 75px;
+
+    display: flex; 
+    flex-direction: row;
+
+    background-color: rgb(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+
+    margin-bottom: 10px;
+}
+
+.file img{ 
+    max-width: 20%;
+
+    height: 100%;
+    
+    padding:  10px;
+}
+
+.infoFiles {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+p.fileName{
+    width: 100%;
+    color: white;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+p.fileSize{
+    width: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.deleteFile{
+    width: 75px;
+    height: 100%;
+    font-size: 18px;
+        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: rgba(220,53,69,255);
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .file img{ 
+        max-width: 30%;
+    }
+}

@@ -6,7 +6,7 @@ import {
   Settings,
   AddShoppingCartOutlined,
   ArticleSharp,
-  GitHub,
+  GitHub, LocalActivity
 } from "@mui/icons-material";
 
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -185,6 +185,7 @@ function Navbar( { userImagePath }) {
           </NavLink>
 
           <NavLink
+            to="/dashboard/cupons"
             className={`${styles.items} ${
               activeLink === "link7" ? styles.active : ""
             }`}
@@ -193,8 +194,8 @@ function Navbar( { userImagePath }) {
               closeNavbarMobile();
             }}
           >
-            <MapIcon />
-            <small> Mapa de Clientes </small>
+            <LocalActivity />
+            <small> Cupons </small>
           </NavLink>
 
           <NavLink
