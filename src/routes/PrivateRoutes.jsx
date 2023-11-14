@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NotAuthenticated from "../pages/NotAuthenticated";
+import NewPassword from "../pages/NewPassword"
 
 function PrivateRoutes({ component: Component, routeKey }) {
 
@@ -30,7 +31,11 @@ function PrivateRoutes({ component: Component, routeKey }) {
      authToken();
    }, [routeKey]);
 
+   
   if (!isLoading) {
+    if(dataUser.newUser = true){
+      return(<NewPassword />)
+   }
     return (isAuth) ? <Component role={dataUser.role} userImagePath={dataUser.imgPath}/> : <NotAuthenticated />
   }
 }
